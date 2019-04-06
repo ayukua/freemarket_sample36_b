@@ -1,0 +1,13 @@
+.sub-footer
+  %nav.sub-footer__nav
+    %ul.sub-footer_nav--list
+      %li
+        = link_to "プライバシーポリシー",   root_path
+      %li
+        = link_to "メリカリ利用規約",       root_path
+      %li
+        = link_to "特定商取引に関する表記",  root_path
+    = link_to root_path, class: "sub-footer__logo" do
+      = image_tag "footer/logo-gray.svg", class: "sub-footer__logo-image"
+    .sub-footer__c
+      © 2019 Mercari

@@ -1,0 +1,42 @@
+.sub-footer{
+  width:              456px;
+  height:             140px;
+  margin:             0 auto;
+  padding:            40px 0;
+  font-size:          12px;
+  color:              #333333;
+  text-decoration:    none;
+
+  ul{
+      display:              flex;
+      justify-content:      space-around;
+      li{
+      display:            inline;
+
+        a{
+      color:              #333333;
+      text-decoration:    none;
+        }
+      }
+  }
+
+  &__logo{
+    width:            80px;
+    height:           65px;
+    margin:           40px auto 0;
+    text-align:       center;
+    display:          block;
+    &-image{
+      width:            80px;
+      height:           65px;
+      color:            #333;
+    }
+  }
+
+  &__c{
+    margin:         8px 0 0;
+    text-align:     center;
+    font-size:      13px;
+
+  }
+}
