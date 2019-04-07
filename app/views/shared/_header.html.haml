@@ -1,0 +1,329 @@
+%header
+  .container
+    .search-form.clearfix
+      = link_to root_path do
+        = image_tag "header/logo.svg", class: "header-logo"
+      %form{ class: "input-search" }
+        %input{ placeholder: "キーワードから探す"}
+        %i.fa.fa-search
+    .nav.clearfix
+      .nav__left
+        %ul.clearfix.menu
+          %li#search-category
+            = link_to "カテゴリーから探す", root_path, class: "hover-blue"
+            %ul.menu__first
+              %li.menu__first--element
+                = link_to "レディース", root_path
+                %ul.menu__second
+                  %li.menu__second--element
+                    = link_to "トップス", root_path
+                    %ul.menu__third
+                      %li
+                        = link_to "Tシャツ", root_path
+                      %li
+                        = link_to "ポロシャツ", root_path
+                      %li
+                        = link_to "トップス", root_path
+                      %li
+                        = link_to "トレーナー", root_path
+                  %li.menu__second--element
+                    = link_to "ジャケット/アウター", root_path
+                    %ul.menu__third
+                      %li
+                        = link_to "パンツ", root_path
+                      %li
+                        = link_to "パンツ", root_path
+                      %li
+                        = link_to "パンツ", root_path
+                      %li
+                        = link_to "パンツ", root_path
+                  %li.menu__second--element
+                    = link_to "パンツ", root_path
+                    %ul.menu__third
+                      %li
+                        = link_to "パンツ", root_path
+                      %li
+                        = link_to "パンツ", root_path
+                      %li
+                        = link_to "パンツ", root_path
+                      %li
+                        = link_to "パンツ", root_path
+                  %li.menu__second--element
+                    = link_to "スカート", root_path
+                    %ul.menu__third
+                      %li
+                        = link_to "パンツ", root_path
+                      %li
+                        = link_to "パンツ", root_path
+                      %li
+                        = link_to "パンツ", root_path
+                      %li
+                        = link_to "パンツ", root_path
+                  %li.menu__second--element
+                    = link_to "ワンピース", root_path
+                    %ul.menu__third
+                      %li
+                        = link_to "Tシャツ", root_path
+                      %li
+                        = link_to "Tシャツ", root_path
+                      %li
+                        = link_to "Tシャツ", root_path
+                      %li
+                        = link_to "Tシャツ", root_path
+                  %li.menu__second--element
+                    = link_to "靴", root_path
+                    %ul.menu__third
+                      %li
+                        = link_to "Tシャツ", root_path
+                      %li
+                        = link_to "Tシャツ", root_path
+                      %li
+                        = link_to "Tシャツ", root_path
+                      %li
+                        = link_to "Tシャツ", root_path
+              %li.menu__first--element
+                = link_to "メンズ", root_path
+                %ul.menu__second
+                  %li.menu__second--element
+                    = link_to "トップス", root_path
+                    %ul.menu__third
+                      %li
+                        = link_to "セーター", root_path
+                      %li
+                        = link_to "セーター", root_path
+                      %li
+                        = link_to "セーター", root_path
+                      %li
+                        = link_to "セーター", root_path
+                  %li.menu__second--element
+                    = link_to "ジャケット", root_path
+                    %ul.menu__third
+                      %li
+                        = link_to "セーター", root_path
+                      %li
+                        = link_to "セーター", root_path
+                      %li
+                        = link_to "パンツ", root_path
+                      %li
+                        = link_to "パンツ", root_path
+                  %li.menu__second--element
+                    = link_to "パンツ", root_path
+                    %ul.menu__third
+                      %li
+                        = link_to "パンツ", root_path
+                      %li
+                        = link_to "パンツ", root_path
+                      %li
+                        = link_to "パンツ", root_path
+                      %li
+                        = link_to "パンツ", root_path
+                  %li.menu__second--element
+                    = link_to "スカート", root_path
+                    %ul.menu__third
+                      %li
+                        = link_to "パンツ", root_path
+                      %li
+                        = link_to "パンツ", root_path
+                      %li
+                        = link_to "パンツ", root_path
+                      %li
+                        = link_to "パンツ", root_path
+              %li.menu__first--element
+                = link_to "ベビー・キッズ", root_path
+                %ul.menu__second
+                  %li.menu__second--element
+                    = link_to "いいよね", root_path
+              %li.menu__first--element
+                = link_to "インテリア・住まい", root_path
+                %ul.menu__second
+                  %li.menu__second--element
+                    = link_to "something", root_path
+              %li.menu__first--element
+                = link_to "本・音楽・ゲーム", root_path
+                %ul.menu__second
+                  %li.menu__second--element
+                    = link_to "something", root_path
+              %li.menu__first--element
+                = link_to "おもちゃ・ホビー・グッズ", root_path
+                %ul.menu__second
+                  %li.menu__second--element
+                    = link_to "something", root_path
+              %li.menu__first--element
+                = link_to "コスメ・香水・美容", root_path
+                %ul.menu__second
+                  %li.menu__second--element
+                    = link_to "something", root_path
+              %li.menu__first--element
+                = link_to "家電・スマホ・カメラ", root_path
+                %ul.menu__second
+                  %li.menu__second--element
+                    = link_to "something", root_path
+              %li.menu__first--element
+                = link_to "スポーツ・レジャー", root_path
+                %ul.menu__second
+                  %li.menu__second--element
+                    = link_to "something", root_path
+              %li.menu__first--element
+                = link_to "ハンドメイド", root_path
+                %ul.menu__second
+                  %li.menu__second--element
+                    = link_to "something", root_path
+              %li.menu__first--element
+                = link_to "チケット", root_path
+                %ul.menu__second
+                  %li.menu__second--element
+                    = link_to "something", root_path
+              %li.menu__first--element
+                = link_to "自転車", root_path
+                %ul.menu__second
+                  %li.menu__second--element
+                    = link_to "something", root_path
+              %li.menu__first--element
+                = link_to "オートバイ", root_path
+                %ul.menu__second
+                  %li.menu__second--element
+                    = link_to "something", root_path
+              %li.menu__first--element
+                = link_to "その他", root_path
+                %ul.menu__second
+                  %li.menu__second--element
+                    = link_to "something", root_path
+              %li.menu__first--element
+                = link_to "カテゴリー一覧", root_path
+                %ul.menu__second
+                  %li.menu__second--element
+                    = link_to "something", root_path
+                    %ul.menu__third
+                      %li
+                        = link_to "god", root_path
+          %li#search-brand
+            = link_to "ブランドから探す", root_path, class: "hover-blue"
+            %ul#brand-list.none
+              %li
+                = link_to "シャネル", root_path
+              %li
+                = link_to "ナイキ", root_path
+              %li
+                = link_to "ルイ ヴィトン", root_path
+              %li
+                = link_to "シュプリーム", root_path
+              %li
+                = link_to "アディダス", root_path
+              %li
+                = link_to "ブランド一覧", root_path
+      .nav__right
+        %ul.clearfix
+          %li.nav__right--element.crearfix
+            = image_tag "header/member_photo_noimage_thumb.png", width: "32", height: "32", class: "mypage-photo"
+            = link_to "マイページ", root_path, class: "hover-blue"
+            .user-show.none
+              .user-header
+                = image_tag "header/member_photo_noimage_thumb.png", width: "60", height: "60"
+              .mypage
+                %p イッセー
+                = link_to "評価: 0", root_path
+                = link_to "出品数: 0", root_path
+                .mypage-inner
+                  %ul.benefit-price
+                    %li
+                      = link_to root_path, class: "clearfix" do
+                        .benefit-left 売上金
+                        .benefit-right
+                          ¥ 0
+                          = fa_icon("angle-right")
+                    %li
+                      = link_to root_path, class: "clearfix" do
+                        .benefit-left ポイント
+                        .benefit-right
+                          P 0
+                          = fa_icon("angle-right")
+                %ul.mypage-lists
+                  %li
+                    = link_to root_path, class: "clearfix" do
+                      .mypage-left いいね！一覧
+                      .mypage-right
+                        = fa_icon("angle-right")
+                  %li
+                    = link_to root_path, class: "clearfix" do
+                      .mypage-left 出品した商品-出品中
+                      .mypage-right
+                        = fa_icon("angle-right")
+                  %li
+                    = link_to root_path, class: "clearfix" do
+                      .mypage-left 出品した商品-取引中
+                      .mypage-right
+                        = fa_icon("angle-right")
+                  %li
+                    = link_to root_path, class: "clearfix" do
+                      .mypage-left 出品した商品-売却済み
+                      .mypage-right
+                        = fa_icon("angle-right")
+                  %li
+                    = link_to root_path, class: "clearfix" do
+                      .mypage-left 購入した商品-取引中
+                      .mypage-right
+                        = fa_icon("angle-right")
+                  %li
+                    = link_to root_path, class: "clearfix" do
+                      .mypage-left 購入した商品-過去の取引
+                      .mypage-right
+                        = fa_icon("angle-right")
+          %li.nav__right--element.crearfix
+            %i.fa.fa-bell
+            = link_to "お知らせ", root_path, class: "hover-blue bell"
+            %ul.news-lists.none
+              %li
+                = link_to root_path, class: "clearfix" do
+                  .news-left
+                    = image_tag "header/mercari_profile.png"
+                  .news-middle
+                    .news-middle-text 明日、800Pの有効期限が切れますフィオwjふぇおfjをjふぇおいふぇいj
+                    = fa_icon("clock")
+                    %time 1日前
+                  .news-right
+                    = fa_icon("angle-right")
+              %li
+                = link_to root_path, class: "clearfix" do
+                  .news-left
+                    = image_tag "header/mercari_profile.png"
+                  .news-middle
+                    .news-middle-text 明日、800Pの有効期限が切れます
+                    = fa_icon("clock")
+                    %time 1日前
+                  .news-right
+                    = fa_icon("angle-right")
+              %li
+                = link_to root_path, class: "clearfix" do
+                  .news-left
+                    = image_tag "header/mercari_profile.png"
+                  .news-middle
+                    .news-middle-text 明日、800Pの有効期限が切れます
+                    = fa_icon("clock")
+                    %time 1日前
+                  .news-right
+                    = fa_icon("angle-right")
+              %li
+                = link_to root_path, class: "clearfix" do
+                  .news-left
+                    = image_tag "header/mercari_profile.png"
+                  .news-middle
+                    .news-middle-text 明日、800Pの有効期限が切れます
+                    = fa_icon("clock")
+                    %time 1日前
+                  .news-right
+                    = fa_icon("angle-right")
+              %li
+                = link_to root_path, class: "clearfix" do
+                  .news-left
+                    = image_tag "header/mercari_profile.png"
+                  .news-middle
+                    .news-middle-text 明日、800Pの有効期限が切れます
+                    = fa_icon("clock")
+                    %time 1日前
+                  .news-right
+                    = fa_icon("angle-right")
+          %li.nav__right--element.crearfix
+            = fa_icon("check")
+            = link_to "やることリスト", root_path, class: "hover-blue check"
+            .to-do.none
+              %p 現在、やることリストはありません
