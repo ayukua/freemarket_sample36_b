@@ -1,0 +1,98 @@
+.signup-content{
+    padding: 0px;
+    background-color: #f5f5f5;
+}
+
+.signup-container{
+
+    &__head{
+        width: 668px;
+        height: 33px;
+        padding: 32px 16px;
+        margin: auto;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        background-color: #ffffff;
+    }
+    &__inner{
+        width: 572px;
+        height: 182px;
+        padding: 64px;
+        margin: auto;
+        background-color: #ffffff;
+    }
+}
+
+.fa-envelope-o {
+    content: "\f003";
+    font-size: 20px;
+    position: relative;
+    padding: 0px;
+    right: 50px;
+    top: 0px;
+}
+
+.fa-facebook-square{
+    content: '\e013';
+    font-size: 20px;
+    position: relative;
+    padding: 0px;
+    right: 68px;
+    top: 0px;
+}
+
+.icon-mail:before {
+    content: '\e01c';
+}
+
+*, ::before, ::after {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+.btn-default {
+    display: block;
+    width: 100%;
+    line-height: 48px;
+    font-size: 14px;
+    border: 1px solid transparent;
+    -webkit-transition: all ease-out .3s;
+    transition: all ease-out .3s;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-mail {
+    width: 334px;
+    height: 50px;
+    margin: auto;
+    // padding: auto auto auto 0;
+    background: #eee;
+    background-color: rgb(238, 238, 238);
+    color: #000;
+}
+
+.btn-sns-facebook {
+    width: 320px;
+    height: 50px;
+    margin: 16px auto 0;
+    background: #385185;
+    color: #fff;
+}
+
+.btn-sns-google {
+    width: 320px;
+    height: 50px;
+    margin: 16px auto 0;
+    background: #fff image-url('signup/google.jpg') no-repeat 3px top;
+    background-size: 8%;
+    background-position: bottom 10px right 275px;
+    border: #979797 solid 1px;
+    color: #333;
+
+}
+
+.clearfix{
+    text-align: center;
+}

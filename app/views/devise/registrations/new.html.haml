@@ -1,0 +1,44 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "UTF-8"}/
+    %title 会員情報入力 - メルカリ スマホでかんたん フリマアプリ
+  %body
+    .signup-content
+      / 「header」部分テンプレート
+      = render "layouts/sub-header"
+      %main.signup-main
+        %section.signup-container
+          %h2.signup-container__head 新規会員登録
+          .signup-container__inner
+            .signup-container__inner--content
+              / 「メルカリ会員情報入力」へ
+              %a.btn-default.btn-mail{:href => "https://www.mercari.com/jp/signup/registration/"}
+                %i.fa.fa-envelope-o
+                メールアドレスで登録
+              / 「facebookで登録」ボタン
+              %button#facebook-login.btn-default.btn-sns.btn-sns-facebook
+                %i.fa.fa-facebook-square
+                Facebookで登録
+              / 『googleで登録』ボタン
+              %button#google-login.btn-default.btn-sns.btn-sns-google
+                Googleで登録
+        %form#login_form_facebook{:action => "/jp/signup/facebook/", :method => "POST", :novalidate => "novalidate"}
+          %input{:name => "__csrf_value", :type => "hidden", :value => "2ec68ad534d52522d2e4a29ef57d8feb73284747f5beb8d168bc371a4b78fb4444251329eca2bb602f98ef007991b51fd137ea6e3673a776dd368d4e07ff9c52b"}/
+          %input{:name => "nickname", :type => "hidden", :value => ""}/
+          %input{:name => "email", :type => "hidden", :value => ""}/
+          %input{:name => "facebook_user_id", :type => "hidden", :value => ""}/
+          %input{:name => "facebook_access_token", :type => "hidden", :value => ""}/
+          %input{:name => "login_type", :type => "hidden", :value => "facebook"}/
+        %form#login_form_google{:action => "/jp/signup/google/", :method => "POST", :novalidate => "novalidate"}
+          %input{:name => "__csrf_value", :type => "hidden", :value => "2ec68ad534d52522d2e4a29ef57d8feb73284747f5beb8d168bc371a4b78fb4444251329eca2bb602f98ef007991b51fd137ea6e3673a776dd368d4e07ff9c52b"}/
+          %input{:name => "nickname", :type => "hidden", :value => ""}/
+          %input{:name => "email", :type => "hidden", :value => ""}/
+          %input{:name => "google_user_id", :type => "hidden", :value => ""}/
+          %input{:name => "google_access_token", :type => "hidden", :value => ""}/
+          %input{:name => "login_type", :type => "hidden", :value => "google"}/
+        %input#google_client_id{:type => "hidden", :value => "238694260676-l0gp5j3hs9p8l2hjmnt126q0b4iin34r.apps.googleusercontent.com"}/
+        %input#facebook_app_id{:type => "hidden", :value => "466308336793848"}/
+      / 「footer」部分テンプレート
+      = render "layouts/sub-footer"
