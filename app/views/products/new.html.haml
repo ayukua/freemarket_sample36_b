@@ -1,0 +1,178 @@
+= render "layouts/sub-header"
+.post-container
+  %h2 商品の情報を入力
+  %form
+    .item-info
+      %h3
+        出品画像
+        %span 必須
+      %p 最大10枚までアップロードできます
+      .clearfix
+        #item-images-container
+          %ul#images-lists
+        #item-images-container2.hidden
+          %ul#images-lists2.hidden
+        %label
+          %input{type: "file", name: "images[]", multiple: true, id: "input-images"}
+          #post-images.have-0-item
+            %h4#erasing-sentence
+              ドラッグアンドドロップ
+              %br
+              またはクリックしてファイルをアップロード
+    .item-info
+      .form-group
+        %h3
+          商品名
+          %span 必須
+        %input{ placeholder: "商品名（必須 40字まで）" }
+      .form-group
+        %h3
+          商品の説明
+          %span 必須
+        %textarea{placeholder: "商品の説明（必須 1000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"}
+    .item-info
+      .clearfix
+        .item-info__left
+          %p 商品の詳細
+        .item-info__right
+          .form-group#category-form
+            %h3
+              カテゴリー
+              %span 必須
+            .select-wrap
+              %select#first-category-select
+                %option{value: "", label: "---"}
+                %option{value: "レディース", label: "レディース"}
+                %option{value: "メンズ", label: "メンズ"}
+                %option{value: "ベビー・キッズ", label: "ベビー・キッズ"}
+                %option{value: "インテリア・住まい・小物", label: "インテリア・住まい・小物"}
+                %option{value: "本・音楽・ゲーム", label: "本・音楽・ゲーム"}
+                %option{value: "おもちゃ・ホビー・グッズ", label: "おもちゃ・ホビー・グッズ"}
+            / .select-wrap
+            /   %select#second-category-select
+            /     %option{value: ""}
+            /       ー
+            /     %option{value: "レディース"}
+            /       レディース
+            /     %option{value: "メンズ"}
+            /       メンズ
+            /     %option{value: "ベビー・キッズ"}
+            /       ベビー・キッズ
+            /     %option{value: "インテリア・住まい・小物"}
+            /       インテリア・住まい・小物
+            /     %option{value: "本・音楽・ゲーム"}
+            /       本・音楽・ゲーム
+            /     %option{value: "おもちゃ・ホビー・グッズ"}
+            /       おもちゃ・ホビー・グッズ
+            /     %option{value: "レディース"}
+            /       レディース
+            /     %option{value: "レディース"}
+            /       レディース
+            / .select-wrap
+            /   %select#third-category-select
+            /     %option{value: ""}
+            /       ー
+            /     %option{value: "レディース"}
+            /       レディース
+            /     %option{value: "メンズ"}
+            /       メンズ
+            /     %option{value: "ベビー・キッズ"}
+            /       ベビー・キッズ
+            /     %option{value: "インテリア・住まい・小物"}
+            /       インテリア・住まい・小物
+            /     %option{value: "本・音楽・ゲーム"}
+            /       本・音楽・ゲーム
+            /     %option{value: "おもちゃ・ホビー・グッズ"}
+            /       おもちゃ・ホビー・グッズ
+            /     %option{value: "レディース"}
+            /       レディース
+            /     %option{value: "レディース"}
+            /       レディース
+          .form-group
+            %h3
+              商品の状態
+              %span 必須
+            .select-wrap
+              %select
+                %option{value: "", label: "---"}
+                %option{value: "", label: "新品・未使用"}
+                %option{value: "", label: "未使用に近い"}
+                %option{value: "", label: "目立った傷や汚れなし"}
+                %option{value: "", label: "やや傷や汚れあり"}
+                %option{value: "", label: "傷や汚れあり"}
+                %option{value: "", label: "全体的に状態が悪い"}
+    .item-info
+      .clearfix
+        .item-info__left
+          .clearfix
+            %p 配送について
+            = link_to "?", root_path
+        .item-info__right
+          .form-group#delivery-box
+            %h3
+              配送料の負担
+              %span 必須
+            .select-wrap
+              %select#delivery-cost
+                %option{value: "", label: "---"}
+                %option{value: "0", label: "送料込み(出品者負担)"}
+                %option{value: "1", label: "着払い(購入者負担)"}
+          .form-group
+            %h3
+              配送元の地域
+              %span 必須
+            .select-wrap
+              %select
+                %option{value: "", label: "---"}
+                - @prefectures.each do |prefecture|
+                  %option{value:"#{prefecture.id}", label: "#{prefecture.name}"}
+          .form-group
+            %h3
+              発送までの日数
+              %span 必須
+            .select-wrap
+              %select
+                %option{value: "", label: "---"}
+                %option{value: "0", label: "1~2日で発送"}
+                %option{value: "", label: "2~3日で発送"}
+                %option{value: "", label: "4~7日で発送"}
+    .item-info
+      .clearfix
+        .item-info__left
+          .clearfix
+            %p 販売価格(300〜9,999,999)
+            = link_to "?", root_path
+        .item-info__right
+          .form-group.price-form
+            .clearfix
+              %h3
+                価格
+                %span 必須
+              %input{placeholder: "例）300", id: "price-input"}
+          .commission
+            .clearfix
+              %h3 販売手数料(10%)
+              %p#commission-result -
+          .benefit
+            .clearfix
+              %h3 販売利益
+              %p#benefit-result -
+    .item-info.sell-btn-part
+      .disclaimer
+        = link_to "禁止されている出品", root_path
+        、
+        = link_to "行為", root_path
+        を必ずご確認ください。
+        %br
+        またブランド品でシリアルナンバー等がある場合はご記載ください。
+        = link_to "偽ブランドの販売", root_path
+        は犯罪であり処罰される可能性があります。
+        %br
+        また、出品をもちまして
+        = link_to "加盟店規約", root_path
+        に同意したことになります。
+        %br
+      %button{type: "submit", class: "item-submit-btn"}
+        出品する
+      = link_to "もどる", root_path, class: "back-page"
+= render "layouts/sub-footer"
