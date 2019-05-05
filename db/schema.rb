@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 20190503112953) do
     t.datetime "remember_created_at"
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
+    t.string   "nickname"
     t.string   "family_name",                                       null: false
     t.string   "first_name",                                        null: false
     t.string   "kana_family_name",                                  null: false
@@ -117,7 +118,6 @@ ActiveRecord::Schema.define(version: 20190503112953) do
     t.string   "tel"
     t.string   "profil_image"
     t.text     "profil_comment",         limit: 65535
-    t.string   "nickname",                                          null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
