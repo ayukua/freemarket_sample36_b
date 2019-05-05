@@ -1,0 +1,36 @@
+.login-content
+  / 「header」部分テンプレート
+  = render "layouts/sub-header"
+  %main.login-main
+    .login-main__content
+      / 新規会員登録のページへ
+      .login-no-account
+        %p アカウントをお持ちでない方はこちら
+        = link_to"新規会員登録","https://www.mercari.com/jp/signup/"
+      .login-sns
+        / 「facebookで登録」ボタン
+        = link_to "facebook-login", url: 'https://www.facebook.com', class: 'btn-default btn-sns btn-sns-facebook' do
+          = fa_icon("facebook-official")
+          Facebookでログイン
+        / 『googleで登録』ボタン
+        %button#google-login.btn-default.btn-sns.btn-sns-google
+          Googleでログイン
+      / メールアドレス・パスワードでログイン
+      %form{action: "https://www.mercari.com/jp/login/", method: "POST", novalidate: "novalidate"}
+        .login-form
+          .login-form__inner
+            %input.login-form__inner--email.input-default{name: "email", placeholder: "メールアドレス", type: "email", value: ""}/
+          .login-form__inner
+            %input.login-form__inner--password.input-default{name: "password", placeholder: "パスワード", type: "password"}/
+          .login-form__inner
+            .g-recaptcha.login-captcha{"data-sitekey" => "6LfZGCYTAAAAAHoK-s7Lg5OdYg5Fq4susvALmZoc"}
+              %div{style: "width: 304px; height: 78px;"}
+                %div
+                  %iframe{frameborder: "0", height: "78", name: "a-dt3ukv86g47g", role: "presentation", sandbox: "allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox", scrolling: "no", src: "https://www.google.com/recaptcha/api2/anchor?ar=1&k=6LfZGCYTAAAAAHoK-s7Lg5OdYg5Fq4susvALmZoc&co=aHR0cHM6Ly93d3cubWVyY2FyaS5jb206NDQz&hl=ja&v=v1554100419869&size=normal&cb=7r5pb4qo15h0", width: "304"}
+                %textarea#g-recaptcha-response.g-recaptcha-response{name: "g-recaptcha-response", style: "width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"}
+                  :preserve
+              %button.login-form__submit.btn-default.btn-red{type: "submit"} ログイン
+          %input{name: "__csrf_value", type: "hidden", value: "a765f84e890afa9ff2789b0ce1364c032d353ae18521a5ab0a98e48d904aac610720d1168211b34c6340dd44e241cda13caf9f2c8ef2f0a5dd23de0ba318c7e33"}/
+          %a{href: "https://www.mercari.com/jp/password/reset/start/"} パスワードをお忘れの方
+  / 「footer」部分テンプレート
+  = render "layouts/sub-footer"
