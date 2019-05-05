@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :logouts, only: [:index]
   resources :identifications, only: [:index]
   resources :users
+  resources :sns_registrations, only: [:index]
   post "statuses/pay", to: "statuses#pay"
   resources :statuses
   resources :categories do

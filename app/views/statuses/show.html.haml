@@ -7,12 +7,12 @@
       .buy__item-inner
         .buy__item--image
           .buy__item--image-img
-            画像
+            = image_tag @image
         .buy__item--name
           テストアイテム
         = form_for :statuses, url: {controller: "statuses", action: "pay"}, html: {class: "buy__item--form"} do |f|
           .buy__item--form-price
-            ¥ 3,000-
+            = "¥ #{@item.price.to_s(:delimited)}-"
             %span 送料込み
           .buy__item--form-accordion
             ポイントはありません
@@ -20,7 +20,7 @@
             .buy__item--form-pay-header
               支払い金額
             .buy__item--form-pay-price
-              ¥ 3,000-
+              = "¥ #{@item.price.to_s(:delimited)}-"
           .buy__item--form-error
             配送先と支払い方法の入力を完了してください。
           = f.number_field :amount, type: "hidden", value: 3000

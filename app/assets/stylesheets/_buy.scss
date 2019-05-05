@@ -19,13 +19,14 @@
         margin: 0 auto;
       .buy__item--image{
           text-align: center;
-        &-img{
+        img{
           width: 148px;
           height: 148px;
           background: silver;
           margin: 0 auto;
           vertical-align: middle;
           opacity: 0.5;
+          object-fit: contain;
         }
       }
       .buy__item--name{

@@ -29,6 +29,9 @@
             float: left;
             background: gainsboro;
             opacity: 0;
+            img{
+              object-fit: contain;
+            }
           }
           .main-photo__list.active{
             opacity: 1;
@@ -46,6 +49,9 @@
           max-height: 75px;
           background: lightblue;
           opacity: 0.5;
+          img{
+            object-fit: contain;
+          }
         }
         &__list.active{
           opacity: 1;
