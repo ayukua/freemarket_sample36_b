@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function(e) {
-  var inputFile = document.getElementById('item_images_attributes_0_image');
+  var inputFile = document.getElementById('product_images_attributes_0_image');
   var some = document.getElementById('erasing-sentence');
   var imagesLists = document.getElementById('images-lists');
   var postArea = document.getElementById('post-images');
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
   }
   inputFile.addEventListener('change', handleFileSelect, false);
 
-  var inputPrice = document.getElementById('item_price');
+  var inputPrice = document.getElementById('product_price');
   var commission = document.getElementById('commission-result');
   var benefit = document.getElementById('benefit-result');
   var hundredsPattern = /^[3-9]\d{2}$/;
@@ -103,12 +103,12 @@ document.addEventListener('DOMContentLoaded', function(e) {
     return String(num).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
   }
 
-  var parentCategory = document.getElementById('item_parent_category_id');
+  var parentCategory = document.getElementById('product_parent_category_id');
   var childCategory = document.getElementsByClassName('childCategory');
   var grandchildCategory = document.getElementsByClassName('grandchildCategory');
   var categoryForm = document.getElementById('category-form');
   var shippingMethod = document.getElementById('shipping-method-select');
-  var feePayer = document.getElementById('item_delivery_fee_payer');
+  var feePayer = document.getElementById('product_delivery_fee_payer');
   feePayer.addEventListener('change', function() {
     if (feePayer.value !== "") {
       shippingMethod.classList.remove('hidden');

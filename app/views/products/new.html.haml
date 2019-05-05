@@ -1,7 +1,7 @@
 = render "layouts/sub-header"
 .post-container
   %h2 商品の情報を入力
-  %form
+  = form_for @product do |f|
     .item-info
       %h3
         出品画像
@@ -12,24 +12,25 @@
           %ul#images-lists
         #item-images-container2.hidden
           %ul#images-lists2.hidden
-        %label
-          %input{type: "file", name: "images[]", multiple: true, id: "input-images"}
-          #post-images.have-0-item
-            %h4#erasing-sentence
-              ドラッグアンドドロップ
-              %br
-              またはクリックしてファイルをアップロード
+        = f.fields_for :images do |i|
+          = i.label :image do
+            = i.file_field :image, multiple: true
+            #post-images.have-0-item
+              %h4#erasing-sentence
+                ドラッグアンドドロップ
+                %br
+                クリックしてファイルをアップロード
     .item-info
       .form-group
         %h3
           商品名
           %span 必須
-        %input{ placeholder: "商品名（必須 40字まで）" }
+        = f.text_field :name, placeholder: "商品名（必須 40字まで）"
       .form-group
         %h3
           商品の説明
           %span 必須
-        %textarea{placeholder: "商品の説明（必須 1000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"}
+        = f.text_area :introduce, placeholder: "商品の説明（必須 1000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
     .item-info
       .clearfix
         .item-info__left
@@ -39,68 +40,21 @@
             %h3
               カテゴリー
               %span 必須
-            .select-wrap
-              %select#first-category-select
-                %option{value: "", label: "---"}
-                %option{value: "レディース", label: "レディース"}
-                %option{value: "メンズ", label: "メンズ"}
-                %option{value: "ベビー・キッズ", label: "ベビー・キッズ"}
-                %option{value: "インテリア・住まい・小物", label: "インテリア・住まい・小物"}
-                %option{value: "本・音楽・ゲーム", label: "本・音楽・ゲーム"}
-                %option{value: "おもちゃ・ホビー・グッズ", label: "おもちゃ・ホビー・グッズ"}
-            / .select-wrap
-            /   %select#second-category-select
-            /     %option{value: ""}
-            /       ー
-            /     %option{value: "レディース"}
-            /       レディース
-            /     %option{value: "メンズ"}
-            /       メンズ
-            /     %option{value: "ベビー・キッズ"}
-            /       ベビー・キッズ
-            /     %option{value: "インテリア・住まい・小物"}
-            /       インテリア・住まい・小物
-            /     %option{value: "本・音楽・ゲーム"}
-            /       本・音楽・ゲーム
-            /     %option{value: "おもちゃ・ホビー・グッズ"}
-            /       おもちゃ・ホビー・グッズ
-            /     %option{value: "レディース"}
-            /       レディース
-            /     %option{value: "レディース"}
-            /       レディース
-            / .select-wrap
-            /   %select#third-category-select
-            /     %option{value: ""}
-            /       ー
-            /     %option{value: "レディース"}
-            /       レディース
-            /     %option{value: "メンズ"}
-            /       メンズ
-            /     %option{value: "ベビー・キッズ"}
-            /       ベビー・キッズ
-            /     %option{value: "インテリア・住まい・小物"}
-            /       インテリア・住まい・小物
-            /     %option{value: "本・音楽・ゲーム"}
-            /       本・音楽・ゲーム
-            /     %option{value: "おもちゃ・ホビー・グッズ"}
-            /       おもちゃ・ホビー・グッズ
-            /     %option{value: "レディース"}
-            /       レディース
-            /     %option{value: "レディース"}
-            /       レディース
+            .select-wrap.category-select
+              = f.collection_select :parent_category_id, @parentCategories, :id, :category, include_blank: "---"
+            - @parentCategories.each do |pc|
+              %template{id: "child#{pc.id}th"}
+                = f.collection_select :child_category_id, pc.children, :id, :category, {include_blank: "---"}, {class: "childCategory"}
+            - @parentCategories.each do |pc|
+              - pc.children.each do |cc|
+                %template{id: "grandchild#{cc.id}th"}
+                  = f.collection_select :grandchild_category_id, cc.children, :id, :category, {include_blank: "---"}, {class: "grandchildCategory"}
           .form-group
             %h3
               商品の状態
               %span 必須
             .select-wrap
-              %select
-                %option{value: "", label: "---"}
-                %option{value: "", label: "新品・未使用"}
-                %option{value: "", label: "未使用に近い"}
-                %option{value: "", label: "目立った傷や汚れなし"}
-                %option{value: "", label: "やや傷や汚れあり"}
-                %option{value: "", label: "傷や汚れあり"}
-                %option{value: "", label: "全体的に状態が悪い"}
+              = f.collection_select :condition, Condition.all, :id, :name, include_blank: "---"
     .item-info
       .clearfix
         .item-info__left
@@ -113,29 +67,25 @@
               配送料の負担
               %span 必須
             .select-wrap
-              %select#delivery-cost
-                %option{value: "", label: "---"}
-                %option{value: "0", label: "送料込み(出品者負担)"}
-                %option{value: "1", label: "着払い(購入者負担)"}
+              = f.collection_select :delivery_fee_payer, DeliveryFeePayer.all, :id, :name, include_blank: "---"
+          .form-group.hidden#shipping-method-select
+            %h3
+              配送の方法
+              %span 必須
+            .select-wrap
+              = f.collection_select :shipping_method, ShippingMethod.all, :id, :name, include_blank: "---"
           .form-group
             %h3
               配送元の地域
               %span 必須
             .select-wrap
-              %select
-                %option{value: "", label: "---"}
-                - @prefectures.each do |prefecture|
-                  %option{value:"#{prefecture.id}", label: "#{prefecture.name}"}
+              = f.collection_select :area, Prefecture.all, :id, :name, include_blank: "---"
           .form-group
             %h3
               発送までの日数
               %span 必須
             .select-wrap
-              %select
-                %option{value: "", label: "---"}
-                %option{value: "0", label: "1~2日で発送"}
-                %option{value: "", label: "2~3日で発送"}
-                %option{value: "", label: "4~7日で発送"}
+              = f.collection_select :days_to_delivery, DaysToDelivery.all, :id, :name, include_blank: "---"
     .item-info
       .clearfix
         .item-info__left
@@ -148,7 +98,7 @@
               %h3
                 価格
                 %span 必須
-              %input{placeholder: "例）300", id: "price-input"}
+              = f.text_field :price, placeholder: "例）300"
           .commission
             .clearfix
               %h3 販売手数料(10%)
@@ -172,7 +122,6 @@
         = link_to "加盟店規約", root_path
         に同意したことになります。
         %br
-      %button{type: "submit", class: "item-submit-btn"}
-        出品する
+      = f.submit "出品する", class: "item-submit-btn"
       = link_to "もどる", root_path, class: "back-page"
 = render "layouts/sub-footer"
