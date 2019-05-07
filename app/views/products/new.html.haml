@@ -7,15 +7,15 @@
         出品画像
         %span 必須
       %p 最大10枚までアップロードできます
-      .clearfix
+      .clearfix#images-post-clearfix
         #item-images-container
           %ul#images-lists
         #item-images-container2.hidden
           %ul#images-lists2.hidden
         = f.fields_for :images do |i|
-          = i.label :image do
-            = i.file_field :image, multiple: true
-            #post-images.have-0-item
+          = i.label :image, id: "images_attributes_0_label" do
+            = i.file_field :image
+            .post-images#have-0-item
               %h4#erasing-sentence
                 ドラッグアンドドロップ
                 %br

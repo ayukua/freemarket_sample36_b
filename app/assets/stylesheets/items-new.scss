@@ -69,10 +69,20 @@
         }
       }
       label {
-        #product_images_attributes_0_image {
+        #product_images_attributes_0_image,
+        #product_images_attributes_1_image,
+        #product_images_attributes_2_image,
+        #product_images_attributes_3_image,
+        #product_images_attributes_4_image,
+        #product_images_attributes_5_image,
+        #product_images_attributes_6_image,
+        #product_images_attributes_7_image,
+        #product_images_attributes_8_image,
+        #product_images_attributes_9_image,
+        #product_images_attributes_10_image {
           display: none;
         }
-        #post-images {
+        .post-images {
           float: right;
           background-color: #f5f5f5;
           border: 1px #CCC dashed;
@@ -87,50 +97,50 @@
             font-weight: bold;
           }
         }
-        .have-0-item {
+        #have-0-item {
           width: 100%;
         }
-        .have-1-item {
+        #have-1-item {
           width: 491px;
           margin-left: 12.391px;
         }
-        .have-2-item {
+        #have-2-item {
           width: 363px;
           margin-left: 12.391px;
         }
-        .have-3-item {
+        #have-3-item {
           width: 235px;
           padding: 40px 0 0 0!important;
           margin-left: 12.391px;
         }
-        .have-4-item {
+        #have-4-item {
           width: 107px;
           padding: 15px 0 0 0!important;
           margin-left: 12.391px;
         }
-        .have-5-item {
+        #have-5-item {
           width: 100%;
-          margin-top: 175px;
+          margin-top: 12px;
         }
-        .have-6-item {
+        #have-6-item {
           width: 491px;
-          margin-top: 175px;
+          margin-top: 12px;
         }
-        .have-7-item {
+        #have-7-item {
           width: 363px;
-          margin-top: 175px;
+          margin-top: 12px;
         }
-        .have-8-item {
+        #have-8-item {
           width: 235px;
           padding: 40px 0 0 0!important;
-          margin-top: 175px;
+          margin-top: 12px;
         }
-        .have-9-item {
+        #have-9-item {
           width: 107px;
           padding: 15px 0 0 0!important;
-          margin-top: 175px;
+          margin-top: 12px;
         }
-        .have-10-item {
+        #have-10-item {
           display: none;
         }
       }

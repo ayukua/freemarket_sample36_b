@@ -1,14 +1,15 @@
 document.addEventListener('DOMContentLoaded', function(e) {
-  var inputFile = document.getElementById('product_images_attributes_0_image');
-  var some = document.getElementById('erasing-sentence');
+  var inputFile0 = document.getElementById('product_images_attributes_0_image');
   var imagesLists = document.getElementById('images-lists');
-  var postArea = document.getElementById('post-images');
+  var postArea = document.getElementsByClassName('post-images')[0];
   var imagesContainer = document.getElementById('item-images-container');
   var imagesLists2 = document.getElementById('images-lists2');
   var imagesContainer2 = document.getElementById('item-images-container2');
+  var imagePostClearfix = document.getElementById('images-post-clearfix');
+  var erasingSentence = document.getElementById('erasing-sentence');
   var num = 0;
 
-  function handleFileSelect(evt) {
+  function AddInputFile(evt) {
     var files = evt.target.files;
     for (var i = 0, f; f = files[i]; i++) {
       if (!f.type.match('image.*')) {
@@ -19,6 +20,23 @@ document.addEventListener('DOMContentLoaded', function(e) {
       reader.onload = (function(theFile) {
         return function(e) {
           num++;
+          console.log(num);
+          document.getElementById(`images_attributes_${num - 1}_label`).classList.add('hidden');
+          var newLabel = document.createElement('label');
+          newLabel.setAttribute('for', `product_images_attributes_${num}_image`);
+          newLabel.setAttribute('id', `images_attributes_${num}_label`);
+          newLabel.innerHTML = `
+  <input type="file" name="product[images_attributes][${num}][image]" id="product_images_attributes_${num}_image">
+  <div id="have-${num}-item" class="post-images">
+    <h4 id="erasing-sentence">
+      ドラッグアンドドロップ
+      <br>
+      クリックしてファイルをアップロード
+    </h4>
+  </div>`
+          console.log(newLabel);
+          imagePostClearfix.appendChild(newLabel);
+          document.getElementById(`product_images_attributes_${num}_image`).addEventListener('change', AddInputFile, false);
           function createList() {
             var li = document.createElement('li');
             var figure = document.createElement('figure');
@@ -41,12 +59,30 @@ document.addEventListener('DOMContentLoaded', function(e) {
             clearfixDiv.appendChild(edit);
             clearfixDiv.appendChild(remove);
             remove.addEventListener('click', function() {
-              postArea.classList.remove(`have-${num}-item`);
+              console.log(num);
               this.parentNode.parentNode.remove();
               this.parentNode.remove();
               this.remove();
+              document.getElementById(`images_attributes_${num - 1}_label`).remove();
+              document.getElementById(`images_attributes_${num}_label`).remove();
+              // document.getElementById('erasing-sentence').parentNode.previousSibling.remove();
+              // document.getElementById('erasing-sentence').parentNode.remove();
+              // document.getElementById('erasing-sentence').remove();
               num--;
-              postArea.classList.add(`have-${num}-item`);
+              console.log(num);
+              var newLabel = document.createElement('label');
+              newLabel.setAttribute('for', `product_images_attributes_${num}_image`);
+              newLabel.setAttribute('id', `images_attributes_${num}_label`);
+              newLabel.innerHTML = `
+      <input type="file" name="product[images_attributes][${num}][image]" id="product_images_attributes_${num}_image">
+      <div id="have-${num}-item" class="post-images">
+        <h4 id="erasing-sentence">
+          ドラッグアンドドロップ
+          <br>
+          クリックしてファイルをアップロード
+        </h4>
+      </div>`
+              imagePostClearfix.appendChild(newLabel);
               if ( num < 6 ) {
                 imagesLists2.classList.add('hidden');
                 imagesContainer2.classList.add('hidden');
@@ -54,33 +90,27 @@ document.addEventListener('DOMContentLoaded', function(e) {
             }, false);
             return li;
           };
-
-          function changePostArea() {
-            postArea.classList.remove(`have-${num - 1}-item`);
-            postArea.classList.add(`have-${num}-item`);
-          };
-
           if ( num <= 5 ) {
             var list = createList();
             imagesLists.appendChild(list);
-            changePostArea();
+            // changePostArea();
           }else if ( num == 6 ) {
             imagesLists2.classList.remove('hidden');
             imagesContainer2.classList.remove('hidden');
             var list = createList();
             imagesLists2.appendChild(list);
-            changePostArea();
+            // changePostArea();
           }else if ( num > 6 ) {
             var list = createList();
             imagesLists2.appendChild(list);
-            changePostArea();
+            // changePostArea();
           }
         };
       })(f);
       reader.readAsDataURL(f);
     }
   }
-  inputFile.addEventListener('change', handleFileSelect, false);
+  inputFile0.addEventListener('change', AddInputFile, false);
 
   var inputPrice = document.getElementById('product_price');
   var commission = document.getElementById('commission-result');
@@ -116,88 +146,5 @@ document.addEventListener('DOMContentLoaded', function(e) {
       shippingMethod.classList.add('hidden');
     };
   });
-
-  // parentCategory.addEventListener('change', function() {
-  //   if (this.value !== "" && document.getElementById('item_child_category_id') === null) {
-  //     var selectWrap = document.createElement('div');
-  //     selectWrap.classList.add('select-wrap');
-  //     selectWrap.innerHTML = `<select id="second-category">
-  //     <option value="">---</value>
-  //     <option value="レディース">レディース</value>
-  //     <option value="メンズ">メンズ</value>
-  //     <option value="ベビー・キッズ">ベビー・キッズ</value>
-  //     <option value="インテリア・住まい・小物">インテリア・住まい・小物</value>
-  //     <option value="本・音楽・ゲーム">本・音楽・ゲーム</value>
-  //     </select>`;
-  //     categoryForm.appendChild(selectWrap);
-  //     var childCategory = document.getElementById('item_child_category_id');
-  //     childCategory.addEventListener('change', function() {
-  //       if (this.value !== "" && document.getElementById('item_grandchild_category_id') === null) {
-  //         var selectWrap = document.createElement('div');
-  //         selectWrap.classList.add('select-wrap');
-  //         selectWrap.innerHTML = `<select id="third-category">
-  //         <option value="">---</value>
-  //         <option value="">レディース</value>
-  //         <option value="">メンズ</value>
-  //         <option value="">ベビー・キッズ</value>
-  //         <option value="">インテリア・住まい・小物</value>
-  //         <option value="">本・音楽・ゲーム</value>
-  //         </select>`;
-  //         var grandchildCategory = document.getElementById('item_grandchild_category_id');
-  //         categoryForm.appendChild(selectWrap);
-  //       };
-  //     });
-  //     childCategory.addEventListener('change', function() {
-  //       var grandchildCategory = document.getElementById('item_grandchild_category_id');
-  //       if (this.value === "" && grandchildCategory != null) {
-  //         grandchildCategory.parentNode.remove();
-  //         grandchildCategory.remove();
-  //       };
-  //     });
-  //   }else if (this.value === "") {
-  //     var childCategory = document.getElementById('item_child_category_id');
-  //     childCategory.parentNode.remove();
-  //     childCategory.remove();
-  //     if (document.getElementById('item_grandchild_category_id') !== null) {
-  //       var grandchildCategory = document.getElementById('item_grandchild_category_id');
-  //       grandchildCategory.parentNode.remove();
-  //       grandchildCategory.remove();
-  //     };
-  //   };
-  // });
-
-  // var deliveryCost = document.getElementById('item_delivery_fee_payer');
-  // var deliveryBox = document.getElementById('delivery-box');
-  // deliveryCost.addEventListener('change', function() {
-  //   if (this.value !== "" && document.getElementById('how-to-delivery') === null) {
-  //     var formHowDelivery = document.createElement('div');
-  //     formHowDelivery.classList.add('form-group');
-  //     var h3 = document.createElement('h3');
-  //     h3.textContent = "配送の方法";
-  //     var span = document.createElement('span');
-  //     span.textContent = "必須";
-  //     h3.appendChild(span);
-  //     formHowDelivery.appendChild(h3);
-  //     var selectWrap = document.createElement('div');
-  //     selectWrap.classList.add('select-wrap');
-  //     selectWrap.innerHTML = `<select id="how-to-delivery">
-  //     <option value="">---</value>
-  //     <option value="0">未定</value>
-  //     <option value="1">らくらくメルカリ便</value>
-  //     <option value="2">ゆうメール</value>
-  //     <option value="3">レターパック</value>
-  //     <option value="4">普通郵便（定型・定型外）</value>
-  //     <option value="5">クロネコヤマト</value>
-  //     <option value="6">ゆうパック</value>
-  //     <option value="7">クリックポスト</value>
-  //     <option value="8">ゆうパケット</value>
-  //     </select>`;
-  //     deliveryBox.appendChild(formHowDelivery);
-  //     deliveryBox.appendChild(selectWrap);
-  //   }else if (this.value === "" && document.getElementById('how-to-delivery') !== null) {
-  //     document.getElementById('how-to-delivery').parentNode.previousElementSibling.remove();
-  //     document.getElementById('how-to-delivery').parentNode.remove();
-  //     document.getElementById('how-to-delivery').remove();
-  //   };
-  // });
 });
+

@@ -14,11 +14,8 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     if @product.save
       redirect_to root_path
-      # 商品の出品完了
-      # モーダルウィンドウが出てくる
     else
       render plain: @product.errors.inspect
-      # 画面はそのままで保存できない旨のメッセージの表示
     end
   end
 
@@ -41,6 +38,7 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :introduce, :price, :parent_category_id, :child_category_id, :grandchild_category_id, :shipping_method, :condition, :delivery_fee_payer, :area, :days_to_delivery, image_attributes: [:image]).merge(seller_id: current_user.id)
+    params.require(:product).permit(:name, :introduce, :price, :parent_category_id, :child_category_id, :grandchild_category_id, :shipping_method, :condition, :delivery_fee_payer, :area, :days_to_delivery, images_attributes: [:image]).merge(seller_id: current_user.id)
   end
+
 end
