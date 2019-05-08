@@ -71,7 +71,7 @@
       border: 1px solid #f5f5f5;
       tbody{
         display: table-row-group;
-        virtcal-align: middle;
+        vertical-align: middle;
         tr{
           display: row-table;
           th{
@@ -155,7 +155,6 @@
   }
   &__buy-btn{
     display: block;
-    background: #ea352d;
     height: 60px;
     margin-top: 20px;
     line-height: 60px;
@@ -164,6 +163,14 @@
     font-size: 24px;
     font-weight: 600;
     text-decoration: none;
+    &.red{
+      background: #ea352d;
+      cursor: pointer;
+    }
+    &.gray{
+      background: gray;
+      cursor: not-allowed;
+    }
   }
   &__item-description{
     margin: 32px 0 0;

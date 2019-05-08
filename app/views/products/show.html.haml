@@ -1,15 +1,5 @@
 = render "shared/header"
-%nav.bread-crumbs
-  %ul.bread-crumbs__ul
-    %li.bread-crumbs__ul-list
-      = link_to root_path do
-        %span.bread-crumbs__ul-list--title
-          メルカリ
-      = fa_icon("angle-right")
-    %li.bread-crumbs__ul-list
-      %span.bread-crumbs__ul-list--title
-        ○○○○○○○○
-
+= render "products/bread-crumbs"
 %section.item-box
   %h1.item-box__header
     = @item.name
@@ -89,7 +79,11 @@
       (税込)
     %span.item-box__price--item_shipping_fee
       送料込み
-  = link_to "購入画面に進む",status_path(@item.id), class: "item-box__buy-btn"
+  - if @item.statuses[0] == nil
+    = link_to "購入画面に進む",status_path(@item.id), class: "item-box__buy-btn red"
+  -else
+    .item-box__buy-btn.gray
+      売り切れました。
   .item-box__item-description
     %p.item-box__item-description-inner
       この商品は〇〇です。〇〇の特徴があります。〇〇で製造され、〇〇で購入しました。見た目は〇〇ですが、〇〇です。

@@ -1,0 +1,11 @@
+%nav.bread-crumbs
+  %ul.bread-crumbs__ul
+    %li.bread-crumbs__ul-list
+      = link_to root_path do
+        %span.bread-crumbs__ul-list--title
+          メルカリ
+      = fa_icon("angle-right")
+    %li.bread-crumbs__ul-list
+      = link_to product_path(@item.id) do
+        %span.bread-crumbs__ul-list--title
+          = @item.name

@@ -1,0 +1,26 @@
+%nav.bread-crumbs
+  %ul.bread-crumbs__ul
+    %li.bread-crumbs__ul-list
+      = link_to root_path do
+        %span.bread-crumbs__ul-list--title
+          メルカリ
+      = fa_icon("angle-right")
+    %li.bread-crumbs__ul-list
+      = link_to category_path(@parent_category.id) do
+        %span.bread-crumbs__ul-list--title
+          = @parent_category.category
+      - unless @child_category == nil
+        = fa_icon("angle-right")
+    - unless @child_category == nil
+      %li.bread-crumbs__ul-list
+        = link_to category_path(@child_category.id) do
+          %span.bread-crumbs__ul-list--title
+            = @child_category.category
+        - unless @grandchild_category == nil
+          = fa_icon("angle-right")
+    - unless @grandchild_category == nil
+      %li.bread-crumbs__ul-list
+        = link_to category_path(@grandchild_category.id) do
+          %span.bread-crumbs__ul-list--title
+            = @grandchild_category.category
+

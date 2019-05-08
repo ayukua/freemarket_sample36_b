@@ -1,4 +1,5 @@
 class StatusesController < ApplicationController
+  before_action :user_sign_in
 
   def index
   end
@@ -6,7 +7,7 @@ class StatusesController < ApplicationController
   def show
     @item = Product.find(params[:id])
     @image = @item.images.first[:image]
-    card = Card.where(user_id: 1).first
+    card = Card.where(user_id: current_user.id).first
     if card.present?
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     customer = Payjp::Customer.retrieve(card.customer_id)
@@ -21,7 +22,7 @@ class StatusesController < ApplicationController
   end
 
   def pay
-    card = Card.where(user_id: 1).first
+    card = Card.where(user_id: current_user.id).first
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
       amount: params[:statuses][:amount],
@@ -50,5 +51,8 @@ class StatusesController < ApplicationController
     params.require(:statuses).permit(:stage, :item_id, :buyer_id)
   end
 
+  def user_sign_in
+    redirect_to new_user_session_path unless user_signed_in?
+  end
 
 end

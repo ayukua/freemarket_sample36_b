@@ -4,6 +4,11 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    category = Category.find(params[:id]) 
+    bread_crumbs = Category.category_bread_crumbs(category)
+    @parent_category = bread_crumbs[:parent_category]
+    @child_category = bread_crumbs[:child_category]
+    @grandchild_category = bread_crumbs[:grandchild_category]
   end
 
   def new

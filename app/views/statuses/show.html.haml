@@ -21,13 +21,19 @@
               支払い金額
             .buy__item--form-pay-price
               = "¥ #{@item.price.to_s(:delimited)}-"
-          .buy__item--form-error
-            配送先と支払い方法の入力を完了してください。
-          = f.number_field :amount, type: "hidden", value: 3000
+          - if current_user.cards.present?
+          - else
+            .buy__item--form-error
+              配送先と支払い方法の入力を完了してください。
+          = f.number_field :amount, type: "hidden", value: @item.price
           = f.number_field :stage, type: "hidden", value: 1
-          = f.number_field :item_id, type: "hidden", value: 1
-          = f.number_field :buyer_id, type: "hidden", value: 1
-          = f.submit "購入する", class: "buy__item--form-submit"
+          = f.number_field :item_id, type: "hidden", value: @item.id
+          = f.number_field :buyer_id, type: "hidden", value: current_user.id
+          - if current_user.cards.present?
+            = f.submit "購入する", class: "buy__item--form-submit red"
+          - else
+            .buy__item--form-submit#gray
+              購入する
     .buy__user-info
       .buy__user-info-inner
         .buy__user-info--header
@@ -43,8 +49,15 @@
         .buy__user-info--header
           支払い方法
         %p.buy__user-info--text
-          ○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○
-        = link_to root_path, class: "buy__user-info--fix" do
+        - if current_user.cards.present?
+          .card_number
+            =  "**** **** **** " + @default_card_information.last4
+          .card_limit
+            有効期限
+            = "#{@exp_month}/#{@exp_year}"
+        - else
+          = "/"
+        = link_to new_mypage_card_path(current_user.id, current_user.id), class: "buy__user-info--fix" do
           %span
             変更する
           %i.fa.fa-angle-right
