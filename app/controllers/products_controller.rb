@@ -44,9 +44,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def edit
     @image_array1 = []
     @image_array2 = []
