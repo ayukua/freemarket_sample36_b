@@ -351,8 +351,8 @@ DEPENDENCIES
   devise
   erb2haml
   factory_bot_rails
-  fog-aws
   faker
+  fog-aws
   font-awesome-rails
   gon
   haml-rails
