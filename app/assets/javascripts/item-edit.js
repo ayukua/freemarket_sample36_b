@@ -168,7 +168,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var benefit = document.getElementById('benefit-result');
     var hundredsPattern = /^[3-9]\d{2}$/;
     var morePattern = /^[1-9]\d{3,6}$/;
-    inputPrice.addEventListener('keyup', function() {
+
+    function priceContent() {
       if ( hundredsPattern.test(inputPrice.value) || morePattern.test(inputPrice.value) ) {
         var commissionResult = separate(Math.floor( inputPrice.value / 10 ));
         commission.textContent = "¥" + commissionResult;
@@ -178,6 +179,11 @@ document.addEventListener('DOMContentLoaded', function() {
         commission.textContent = "-";
         benefit.textContent = "-";
       };
+    }
+    priceContent();
+
+    inputPrice.addEventListener('keyup', function() {
+      priceContent();
     });
 
     function separate(num){
