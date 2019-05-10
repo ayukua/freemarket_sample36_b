@@ -32,427 +32,51 @@
         %h3
           = link_to "レディース 新着アイテム", root_path
         .flexbox
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "ladies/m14164076023_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "ladies/m14164076023_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "ladies/m14164076023_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "ladies/m14164076023_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
+          = render partial: 'product', collection: @products_ladies
         = link_to "すべての商品をみる", root_path, class: "to-all-products"
       .products-container
         %h3
           = link_to "メンズ 新着アイテム", root_path
         .flexbox
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "mens/m11580290234_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "mens/m11580290234_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "mens/m11580290234_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "mens/m11580290234_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-        = link_to "すべての商品を見る", root_path, class: "to-all-products"
+          = render partial: 'product', collection: @products_mans
+        = link_to "すべての商品をみる", root_path, class: "to-all-products"
       .products-container
         %h3
           = link_to "ベイビー・キッズ 新着アイテム", root_path
         .flexbox
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "mens/m34638894428_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "mens/m34638894428_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "mens/m34638894428_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "mens/m34638894428_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-        = link_to "すべての商品を見る", root_path, class: "to-all-products"
+          = render partial: 'product', collection: @products_kids
+        = link_to "すべての商品をみる", root_path, class: "to-all-products"
       .products-container
         %h3
-          = link_to "コスメ・化粧品 新着アイテム", root_path
+          = link_to "インテリア・住まい・小物 新着アイテム", root_path
         .flexbox
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "mens/m45576551752_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "mens/m45576551752_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "mens/m45576551752_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "mens/m45576551752_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-        = link_to "すべての商品を見る", root_path, class: "to-all-products"
+          = render partial: 'product', collection: @products_interiors
+        = link_to "すべての商品をみる", root_path, class: "to-all-products"
   .pickup-part
     %h2 ピックアップブランド
     .inner
       .products-container
         %h3
-          = link_to "シャネル 新着アイテム", root_path
+          = link_to "本・音楽・ゲーム 新着アイテム", root_path
         .flexbox
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "mens/m75636353346_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "mens/m75636353346_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "mens/m75636353346_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "mens/m75636353346_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-        = link_to "すべての商品を見る", root_path, class: "to-all-products"
+          = render partial: 'product', collection: @products_books
+        = link_to "すべての商品をみる", root_path, class: "to-all-products"
       .products-container
         %h3
-          = link_to "ルイ ヴィトン 新着アイテム", root_path
+          = link_to "おもちゃ・ホビー・グッズ 新着アイテム", root_path
         .flexbox
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "ladies/m88525110501_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "ladies/m88525110501_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "ladies/m88525110501_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "ladies/m88525110501_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-        = link_to "すべての商品を見る", root_path, class: "to-all-products"
+          = render partial: 'product', collection: @products_toys
+        = link_to "すべての商品をみる", root_path, class: "to-all-products"
       .products-container
         %h3
-          = link_to "ルイ ヴィトン 新着アイテム", root_path
+          = link_to "コスメ・香水・美容 新着アイテム", root_path
         .flexbox
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "ladies/m85087340362_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "ladies/m85087340362_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "ladies/m85087340362_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "ladies/m85087340362_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-        = link_to "すべての商品を見る", root_path, class: "to-all-products"
+          = render partial: 'product', collection: @products_perfumes
+        = link_to "すべての商品をみる", root_path, class: "to-all-products"
       .products-container
         %h3
-          = link_to "ルイ ヴィトン 新着アイテム", root_path
+          = link_to "家電・スマホ・カメラ 新着アイテム", root_path
         .flexbox
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "ladies/m83966698070_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "ladies/m83966698070_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "ladies/m83966698070_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-          %section.product
-            = link_to root_path do
-              %figure.product__image
-                = image_tag "ladies/m83966698070_1.jpg", width: "213", height: "220"
-              .product__detail
-                %h4 エアマックス 25.5 極美品
-                .product__detail--items.clearfix
-                  .price-part ¥6,000
-                  .likes-part
-                    = fa_icon("heart")
-                    %span 3
-                  %p.tax-part (税込)
-        = link_to "すべての商品を見る", root_path, class: "to-all-products"
+          = render partial: 'product', collection: @products_appliances
+        = link_to "すべての商品をみる", root_path, class: "to-all-products"
 = render 'shared/footer'

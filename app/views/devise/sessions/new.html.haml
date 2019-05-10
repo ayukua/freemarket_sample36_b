@@ -6,22 +6,26 @@
       / 新規会員登録のページへ
       .login-no-account
         %p アカウントをお持ちでない方はこちら
-        = link_to"新規会員登録","https://www.mercari.com/jp/signup/"
+        = link_to"新規会員登録", users_path
       .login-sns
         / 「facebookで登録」ボタン
-        = link_to "facebook-login", url: 'https://www.facebook.com', class: 'btn-default btn-sns btn-sns-facebook' do
+        = link_to user_facebook_omniauth_authorize_path, class: 'btn-default btn-sns btn-sns-facebook' do
           = fa_icon("facebook-official")
           Facebookでログイン
         / 『googleで登録』ボタン
         %button#google-login.btn-default.btn-sns.btn-sns-google
-          Googleでログイン
+          =link_to user_google_oauth2_omniauth_authorize_path do
+            Googleでログイン
       / メールアドレス・パスワードでログイン
-      %form{action: "https://www.mercari.com/jp/login/", method: "POST", novalidate: "novalidate"}
+      = form_for(resource, as: resource_name, html: {class: 'login_form'}, url: session_path(resource_name)) do |f|
         .login-form
           .login-form__inner
-            %input.login-form__inner--email.input-default{name: "email", placeholder: "メールアドレス", type: "email", value: ""}/
+            =f.text_field :email, class: 'login-form__inner--email input-default', placeholder: "メールアドレス"
+
+            / %input.login-form__inner--email.input-default{name: "email", placeholder: "メールアドレス", type: "email", value: ""}/
           .login-form__inner
-            %input.login-form__inner--password.input-default{name: "password", placeholder: "パスワード", type: "password"}/
+            =f.password_field :password, class: 'login-form__inner--password input-default', placeholder: "パスワード"
+            / %input.login-form__inner--password.input-default{name: "password", placeholder: "パスワード", type: "password"}/
           .login-form__inner
             .g-recaptcha.login-captcha{"data-sitekey" => "6LfZGCYTAAAAAHoK-s7Lg5OdYg5Fq4susvALmZoc"}
               %div{style: "width: 304px; height: 78px;"}
@@ -31,6 +35,9 @@
                   :preserve
               %button.login-form__submit.btn-default.btn-red{type: "submit"} ログイン
           %input{name: "__csrf_value", type: "hidden", value: "a765f84e890afa9ff2789b0ce1364c032d353ae18521a5ab0a98e48d904aac610720d1168211b34c6340dd44e241cda13caf9f2c8ef2f0a5dd23de0ba318c7e33"}/
-          %a{href: "https://www.mercari.com/jp/password/reset/start/"} パスワードをお忘れの方
-  / 「footer」部分テンプレート
+          %a{href: ""} パスワードをお忘れの方
+  「footer」部分テンプレート
   = render "layouts/sub-footer"
+
+
+

@@ -6,6 +6,6 @@
           メルカリ
       = fa_icon("angle-right")
     %li.bread-crumbs__ul-list
-      = link_to product_path(@item.id) do
+      = link_to product_path(@product.id) do
         %span.bread-crumbs__ul-list--title
-          = @item.name
+          = @product.name

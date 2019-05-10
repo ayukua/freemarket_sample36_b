@@ -263,7 +263,10 @@ Devise.setup do |config|
     config.omniauth( :google_oauth2,
                      ENV['GOOGLE_CLIENT_ID'],
                      ENV['GOOGLE_CLIENT_SECRET'],
-                     {:scope => 'email', :redirect_uri => "http://localhost:3000/users/auth/google_oauth2/callback"})
+                     {:scope => 'email, profile', :redirect_uri => "http://localhost:3000/users/auth/google_oauth2/callback"})
+     config.omniauth( :facebook,
+                      ENV['FACEBOOK_APP_ID'],
+                      ENV['FACEBOOK_APP_SECRET'])
   end
 
   # Add a new OmniAuth provider. Check the wiki for more information on setting

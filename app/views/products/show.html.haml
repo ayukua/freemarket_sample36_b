@@ -2,7 +2,7 @@
 = render "products/bread-crumbs"
 %section.item-box
   %h1.item-box__header
-    = @item.name
+    = @product.name
   .item-box__main
     .item-box__main--image
       .main-photo
@@ -74,19 +74,21 @@
             1~2日程度
   .item-box__price
     %span.item-box__price--item_price
-      = "¥ #{@item.price.to_s(:delimited)}"
+      = "¥ #{@product.price.to_s(:delimited)}"
     %span.item-box__price--item_tax
       (税込)
     %span.item-box__price--item_shipping_fee
       送料込み
-  - if @item.statuses[0] == nil
-    = link_to "購入画面に進む",status_path(@item.id), class: "item-box__buy-btn red"
-  -else
+  - if @product.statuses[0] == nil
+    = link_to "購入画面に進む",status_path(@product.id), class: "item-box__buy-btn red"
+  - else
     .item-box__buy-btn.gray
       売り切れました。
   .item-box__item-description
     %p.item-box__item-description-inner
       この商品は〇〇です。〇〇の特徴があります。〇〇で製造され、〇〇で購入しました。見た目は〇〇ですが、〇〇です。
+  - if user_signed_in? && @product.seller_id == current_user.id
+    = link_to "商品を削除する", product_path(@product.id), method: :delete, class: "item-box__delete"
 
   .item-box__item-button
     .item-box__item-button--left

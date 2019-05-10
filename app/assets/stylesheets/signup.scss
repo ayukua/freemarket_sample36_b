@@ -1,158 +1,158 @@
-$color-gray: #f5f5f5;
-$color-dark_gray: #eeeeee;
-$color-white: #ffffff;
-$color-black: #000000;
+// $color-gray: #f5f5f5;
+// $color-dark_gray: #eeeeee;
+// $color-white: #ffffff;
+// $color-black: #000000;
 
-@mixin signup-box($width,$height){
-  width: $width;
-  height: $height;
-}
+// @mixin signup-box($width,$height){
+//   width: $width;
+//   height: $height;
+// }
 
-@mixin signup-btn{
-  width: 320px;
-  height: 50px;
-}
+// @mixin signup-btn{
+//   width: 320px;
+//   height: 50px;
+// }
 
-@mixin signup-fa-position($padding,$right,$top){
-  position: relative;
-  padding: $padding;
-  right: $right;
-  top: $top;
-}
-
-
-
-.signup-content{
-  padding: 0px;
-  background-color: $color-gray;
-  .signup-main{
-    @include signup-box(700px,408px);
-    margin: 0px auto 0px;
-    .signup-container{
-      &__head{
-        @include signup-box(700px,97px);
-        padding: 32px 16px;
-        font-size: 22px;
-        font-weight: bold;
-        text-align: center;
-        background-color: $color-white;
-      }
-      &__inner{
-        @include signup-box(700px,311px);
-        padding: 64px;
-        background-color: $color-white;
-        border-top: 1px solid $color-gray;
-        &--content{
-          .fa-envelope-o {
-            content: "\f003";
-            font-size: 20px;
-        @include signup-fa-position(0,50px,0)
-          }
-          .fa-facebook-official{
-            content: '\e013';
-            font-size: 20px;
-            @include signup-fa-position(0,68px,0)
-          }
-          .btn-default {
-            display: block;
-            width: 100%;
-            line-height: 48px;
-            font-size: 14px;
-            border: 1px solid transparent;
-            -webkit-transition: all ease-out .3s;
-            transition: all ease-out .3s;
-            cursor: pointer;
-            text-align: center;
-          }
-          .btn-mail {
-            @include signup-btn;
-            margin: auto;
-            background: $color-dark_gray;
-            color: $color-black;
-          }
-          .btn-sns-facebook {
-            @include signup-btn;
-            margin: 16px auto 0;
-            background: #385185;
-            color: $color-white;
-          }
-          .btn-sns-google {
-            @include signup-box(320px,50px);
-            margin: 16px auto 0;
-            background: $color-white image-url('signup/google_logo.jpg') no-repeat 3px top;
-            background-size: 8%;
-            background-position: bottom 10px right 275px;
-            border: $color-black solid 1px;
-          }
-          .icon-mail:before {
-            content: '\e01c';
-          }
-          *, ::before, ::after {
-            -webkit-box-sizing: inherit;
-            box-sizing: inherit;
-          }
-          .clearfix{
-            text-align: center;
-          }
-        }
-      }
-    }
-  }
-}
-
-.fa-envelope-o {
-  content: "\f003";
-  font-size: 20px;
-  @include signup-fa-position(0,50px,0)
-}
+// @mixin signup-fa-position($padding,$right,$top){
+//   position: relative;
+//   padding: $padding;
+//   right: $right;
+//   top: $top;
+// }
 
 
-.fa-facebook-official{
-  content: '\e013';
-  font-size: 20px;
-  @include signup-fa-position(0,68px,0)
-}
 
-.icon-mail:before {
-  content: '\e01c';
-}
+// .signup-content{
+//   padding: 0px;
+//   background-color: $color-gray;
+//   .signup-main{
+//     @include signup-box(700px,408px);
+//     margin: 0px auto 0px;
+//     .signup-container{
+//       &__head{
+//         @include signup-box(700px,97px);
+//         padding: 32px 16px;
+//         font-size: 22px;
+//         font-weight: bold;
+//         text-align: center;
+//         background-color: $color-white;
+//       }
+//       &__inner{
+//         @include signup-box(700px,311px);
+//         padding: 64px;
+//         background-color: $color-white;
+//         border-top: 1px solid $color-gray;
+//         &--content{
+//           .fa-envelope-o {
+//             content: "\f003";
+//             font-size: 20px;
+//         @include signup-fa-position(0,50px,0)
+//           }
+//           .fa-facebook-official{
+//             content: '\e013';
+//             font-size: 20px;
+//             @include signup-fa-position(0,68px,0)
+//           }
+//           .btn-default {
+//             display: block;
+//             width: 100%;
+//             line-height: 48px;
+//             font-size: 14px;
+//             border: 1px solid transparent;
+//             -webkit-transition: all ease-out .3s;
+//             transition: all ease-out .3s;
+//             cursor: pointer;
+//             text-align: center;
+//           }
+//           .btn-mail {
+//             @include signup-btn;
+//             margin: auto;
+//             background: $color-dark_gray;
+//             color: $color-black;
+//           }
+//           .btn-sns-facebook {
+//             @include signup-btn;
+//             margin: 16px auto 0;
+//             background: #385185;
+//           //   color: $color-white;
+//           }
+//           .btn-sns-google {
+//             @include signup-box(320px,50px);
+//             margin: 16px auto 0;
+//             background: $color-white image-url('signup/google_logo.jpg') no-repeat 3px top;
+//             background-size: 8%;
+//             background-position: bottom 10px right 275px;
+//             border: $color-black solid 1px;
+//           }
+//           .icon-mail:before {
+//             content: '\e01c';
+//           }
+//           *, ::before, ::after {
+//             -webkit-box-sizing: inherit;
+//             box-sizing: inherit;
+//           }
+//           .clearfix{
+//             text-align: center;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
 
-*, ::before, ::after {
-  -webkit-box-sizing: inherit;
-  box-sizing: inherit;
-}
+// .fa-envelope-o {
+//   content: "\f003";
+//   font-size: 20px;
+//   @include signup-fa-position(0,50px,0)
+// }
 
-.btn-default {
-  display: block;
-  width: 100%;
-  line-height: 48px;
-  font-size: 14px;
-    border: 1px solid transparent;
-    -webkit-transition: all ease-out .3s;
-    transition: all ease-out .3s;
-    cursor: pointer;
-    text-align: center;
-}
 
-.btn-mail {
-  @include signup-btn;
-  margin: auto;
-  background: $color-dark_gray;
-  color: $color-black;
-}
+// .fa-facebook-official{
+//   content: '\e013';
+//   font-size: 20px;
+//   @include signup-fa-position(0,68px,0)
+// }
 
-.btn-sns-facebook {
-  @include signup-btn;
-  margin: 16px auto 0;
-  background: #385185;
-  color: $color-white;
-}
+// .icon-mail:before {
+//   content: '\e01c';
+// }
 
-.btn-sns-google {
-  @include signup-box(320px,50px);
-  margin: 16px auto 0;
-  background: $color-white image-url('signup/google_logo.jpg') no-repeat 3px top;
-  background-size: 8%;
-  background-position: bottom 10px right 275px;
-  border: $color-black solid 1px;
-}
+// *, ::before, ::after {
+//   -webkit-box-sizing: inherit;
+//   box-sizing: inherit;
+// }
+
+// .btn-default {
+//   display: block;
+//   width: 100%;
+//   line-height: 48px;
+//   font-size: 14px;
+//     border: 1px solid transparent;
+//     -webkit-transition: all ease-out .3s;
+//     transition: all ease-out .3s;
+//     cursor: pointer;
+//     text-align: center;
+// }
+
+// .btn-mail {
+//   @include signup-btn;
+//   margin: auto;
+//   background: $color-dark_gray;
+//   color: $color-black;
+// }
+
+// .btn-sns-facebook {
+//   @include signup-btn;
+//   margin: 16px auto 0;
+//   background: #385185;
+//   color: $color-white;
+// }
+
+// .btn-sns-google {
+//   @include signup-box(320px,50px);
+//   margin: 16px auto 0;
+//   background: $color-white image-url('signup/google_logo.jpg') no-repeat 3px top;
+//   background-size: 8%;
+//   background-position: bottom 10px right 275px;
+//   border: $color-black solid 1px;
+// }

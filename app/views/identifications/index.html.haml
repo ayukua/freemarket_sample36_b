@@ -1,3 +1,4 @@
+= render partial: 'shared/header'
 %main.l-container.clearfix
   .identification
     %section.identification__content
@@ -10,7 +11,7 @@
             %br
             登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
           %p.identification__content__form__note
-            =link_to root_path do
+            =link_to root_path, class: 'text-style' do
               本人確認書類のアップロードについて
               %i.fa.fa-chevron-right
         .identification__content__form__block
@@ -67,10 +68,11 @@
           =f.submit "登録する", class: 'btn-default btn-red'
         .identification__content__form__block.identification__content__form__note
           %p
-            =link_to root_path do
+            =link_to root_path, class: 'text-style' do
               本人情報の登録について
               %i.fa.fa-chevron-right
 
   = render partial: 'mypages/side-bar'
+= render partial: 'shared/footer'
 
 

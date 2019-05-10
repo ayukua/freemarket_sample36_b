@@ -1,12 +1,31 @@
 class SnsCredential < ApplicationRecord
 
-  devise :omniauthable, omniauth_providers: %i[facebook google_oauth2]
+  belongs_to :user, optional: true
 
-  belongs_to :user
+  validates :name,     presence: true
+  validates :email,     presence: true, uniqueness: true
+  validates :provider,     presence: true
+  validates :uid,     presence: true
 
-  def self.find_for_google_oauth2(auth, signed_in_resource=nil)
-    # sns = User.find_for_google_oauth2(request.env["omniauth.auth"])
-    sns = SnsCredential.where(uid: auth.uid, provider: auth.provider).first_or_create
+  def self.find_for_facebook(auth)
+    sns = SnsCredential.where(name: auth.info.name, uid: auth.uid, provider: auth.provider, email: auth.info.email).first_or_create
+
+    if sns.user
+      user = sns.user
+    end
+
+    unless user
+      user = User.new(
+                       nickname: auth.info.name,
+                       email:    auth.info.email,
+                      )
+
+    end
+    user
+  end
+
+  def self.find_for_google_oauth2(auth)
+    sns = SnsCredential.where(name: auth.info.name, uid: auth.uid, provider: auth.provider, email: auth.info.email, token: auth.credentials.token).first_or_create
 
     # sns.usertがいるかどうかでif文を作る
     if sns.user
@@ -16,12 +35,11 @@ class SnsCredential < ApplicationRecord
 
     # いなかった場合はUser.newしてauth.infoのnameとemailを入れておく
     unless user
-      user = User.new( name:     auth.info.name,
-                       provider: auth.provider,
-                       uid:      auth.uid,
+      user = User.new(
+                       nickname: auth.info.name,
                        email:    auth.info.email,
-                       token:    auth.credentials.token,
-                       password: Devise.friendly_token[0, 20])
+                      )
+
     end
     # メソッドの最後でuserを返す
     user

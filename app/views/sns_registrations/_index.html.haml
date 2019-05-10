@@ -1,0 +1,106 @@
+%main.single-main
+
+  %section.identification
+    %h2.identification__head.bold
+      会員情報入力
+    = form_for(resource, as: resource_name, html: {class: 'identification__form'}, url: registration_path(resource_name)) do |f|
+      .identification__form__content
+        .identification__form__content__block
+          =f.label :nickname, class: 'identification__form__content__block__label' do
+            ニックネーム
+          %span.identification__form__content__block__any
+            必須
+          =f.text_field :nickname, class: 'identification__form__content__block__input', placeholder: "例)メルカリ太郎"
+        .identification__form__content__block
+          =f.label :email, class: 'identification__form__content__block__label' do
+            メールアドレス
+          %span.identification__form__content__block__any
+            必須
+          =f.text_field :email, class: 'identification__form__content__block__input', placeholder: "PC・携帯どちらでも可"
+        .identification__form__content__block
+          =f.label :password, class: 'identification__form__content__block__label' do
+            パスワード
+          %span.identification__form__content__block__any
+            必須
+          =f.password_field :password, class: 'identification__form__content__block__input', placeholder: "6文字以上"
+        .identification__form__content__block
+          =f.label :password, class: 'identification__form__content__block__label' do
+            パスワード(確認)
+          %span.identification__form__content__block__any
+            必須
+          =f.password_field :password, class: 'identification__form__content__block__input', placeholder: "6文字以上"
+
+        .identification__form__content__block
+          .bold.text-left.identification__head--sub
+            本人確認
+          %p.text-left
+            安心・安全にご利用いただくために、お客様の本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+
+        .identification__form__content__block
+          =f.label :family_name, class: 'identification__form__content__block__label' do
+            姓（全角）
+          %span.identification__form__content__block__any
+            必須
+          =f.text_field :family_name, class: 'identification__form__content__block__input', placeholder: "例)山田"
+        .identification__form__content__block
+          =f.label :first_name, class: 'identification__form__content__block__label' do
+            名（全角）
+          %span.identification__form__content__block__any
+            必須
+          =f.text_field :first_name, class: 'identification__form__content__block__input', placeholder: "例)彩"
+        .identification__form__content__block
+          =f.label :kana_family_name, class: 'identification__form__content__block__label' do
+            姓カナ（全角）
+          %span.identification__form__content__block__any
+            必須
+          =f.text_field :kana_family_name, class: 'identification__form__content__block__input', placeholder: "例)ヤマダ"
+        .identification__form__content__block
+          =f.label :kana_first_name, class: 'identification__form__content__block__label' do
+            名カナ（全角）
+          %span.identification__form__content__block__any
+            必須
+          =f.text_field :kana_first_name, class: 'identification__form__content__block__input', placeholder: "例)彩"
+        .identification__form__content__block
+          =f.label :birthday, class: 'identification__form__content__block__label' do
+            生年月日
+          %span.identification__form__content__block__any
+            必須
+          %br
+          .identification__form__content__block__select
+            .identification__form__content__block__select__birth
+              =f.select :birth_year, BirthYear.all.map{|b| b.year}, {}, {class: 'identification__select'}
+              %i.fa.fa-chevron-down
+            %span.span_birth
+              年
+          .identification__form__content__block__select
+            .identification__form__content__block__select__birth
+              =f.select :birth_month, BirthMonth.all.map{|b| b.month}, {}, {class: 'identification__select'}
+              %i.fa.fa-chevron-down
+            %span.span_birth
+              月
+          .identification__form__content__block__select
+            .identification__form__content__block__select__birth
+              =f.select :birth_day, BirthDay.all.map{|b| b.day}, {}, {class: 'identification__select'}
+              %i.fa.fa-chevron-down
+            %span.span_birth
+              日
+          %p.info_text
+            ※本人情報を正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+
+        .identification__form__content__block
+          .g-recaptcha{data: { sitekey: "6LfZGCYTAAAAAHoK-s7Lg5OdYg5Fq4susvALmZoc"}}
+            .g-recaptcha__container{style: 'width: 304px; height: 78px;'}
+              %div
+                %iframe{src: "https://www.google.com/recaptcha/api2/anchor?ar=2&k=6LfZGCYTAAAAAHoK-s7Lg5OdYg5Fq4susvALmZoc&co=aHR0cHM6Ly93d3cubWVyY2FyaS5jb206NDQz&hl=ja&v=v1554100419869&size=normal&cb=fieqsllt227",  width: '304', height: '78', role: 'presentation', scrolling: 'no'}
+        .identification__form__content__block
+          %p.text-center
+            「次に進む」のボタンを押すことにより、
+            =link_to "利用規約", root_path, class: 'identification--color'
+            に同意したものとみなします
+        .identification__form__content__block
+          = f.submit "次へ進む", class: 'btn-save btn-default btn-red'
+        .identification__form__content__block.text-right
+          %p
+            =link_to root_path, class: 'identification--color' do
+              本人情報の登録について
+              %i.fa.fa-chevron-right

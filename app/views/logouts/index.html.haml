@@ -1,3 +1,5 @@
+= render partial: 'shared/header'
+  = render partial: 'shared/header'
 %main.l-container.clearfix
   .logout
     .logout__container
@@ -5,4 +7,4 @@
         .logout__container__form__content
           =link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn-default btn-red'
   = render partial: 'mypages/side-bar'
-  
+= render partial: 'shared/footer'

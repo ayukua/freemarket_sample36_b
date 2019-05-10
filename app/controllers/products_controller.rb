@@ -4,6 +4,22 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:edit, :update]
 
   def index
+    # 各カテゴリーの商品を無作為に４つずつ取得
+    @products_ladies = Product.get_random_product(1)
+    @products_mans = Product.get_random_product(2)
+    @products_kids = Product.get_random_product(3)
+    @products_interiors = Product.get_random_product(4)
+    @products_books = Product.get_random_product(5)
+    @products_toys = Product.get_random_product(6)
+    @products_perfumes = Product.get_random_product(7)
+    @products_appliances = Product.get_random_product(8)
+  end
+
+  def show
+    @product = Product.find(params[:id])
+    @images = @product.images
+    @seller = User.find(@product.seller_id)
+    @seller_items = Product.where(seller_id: @seller.id).where.not(id: @seller.id)
   end
 
   def new
@@ -45,6 +61,12 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    @product = Product.find(params[:id])
+    if @product.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
   end
 
   private

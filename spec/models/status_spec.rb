@@ -3,9 +3,11 @@ require 'rails_helper'
 RSpec.describe Status do
   describe "決済できる場合" do
     it "stage, item_id, buyer_id が存在する時に登録できる" do
-      user = create(:user)
-      item = create(:item, id: 1)
-      status = build(:status)
+      seller = create(:user)
+      category = create(:category)
+      product = create(:product, seller_id: seller.id)
+      buyer = create(:user , id: "2", email: "test@gmail.com")
+      status = build(:status, buyer_id: buyer.id, item_id: product.id)
       expect(status).to be_valid
     end
   end

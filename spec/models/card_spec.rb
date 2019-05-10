@@ -8,7 +8,7 @@ describe Card do
       expect(card).to be_valid
     end
   end
-  
+
   describe "登録できない場合" do
     it "user_idがnilの場合は登録できない" do
       card = build(:card, user_id: nil)
@@ -52,6 +52,6 @@ describe Card do
       another_card.valid?
       expect(another_card.errors[:card_id]).to include("has already been taken")
     end
-    
+
   end
 end

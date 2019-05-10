@@ -52,6 +52,8 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'pry-doc'
+  gem 'faker'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -78,3 +80,4 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'gon'
 gem 'fog-aws'
+gem 'erb2haml'

@@ -28,8 +28,6 @@
                 .clearfix
                   %span#edit 編集
                   %span.remove 削除
-          / # = f.fields_for :images do |i|
-          / #   = i.check_box :_destroy
         = f.fields_for :images do |i|
           = i.label :image, class: "edit-label" do
             = i.file_field :image

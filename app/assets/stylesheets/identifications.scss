@@ -1,19 +1,13 @@
-.clearfix:after {
-content: '';
-display: block;
-clear: both;
-}
+// .clearfix:after {
+// content: '';
+// display: block;
+// clear: both;
+// }
 
-.identification__content__head {
-  p {
-  margin: 8px 0 0;
-  line-height: 1.5;
-  }
-  a {
+  .text-style {
     color: #0099e8;
     text-decoration: none;
   }
-}
 
 .l-container {
   width: 1020px;
@@ -33,6 +27,11 @@ clear: both;
         border-bottom: 1px solid #f5f5f5;
         text-align: center;
       }
+    p {
+    margin: 8px 0 0;
+    line-height: 1.5;
+    }
+
       &__form {
         padding: 64px;
         border-top: 1px solid #f5f5f5;
