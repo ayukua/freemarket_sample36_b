@@ -32,6 +32,16 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @image_array1 = []
+    @image_array2 = []
+    @product.images[0...5].each do |img1|
+      @image_array1 << img1
+    end
+    if @product.images.length > 5
+      @product.images[5...10].each do |img2|
+        @image_array2 << img2
+      end
+    end
   end
 
   def destroy

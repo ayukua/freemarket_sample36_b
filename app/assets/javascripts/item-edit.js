@@ -9,20 +9,32 @@ document.addEventListener('DOMContentLoaded', function() {
     var imagePostClearfix = document.getElementById('images-post-clearfix');
     var erasingSentence = document.getElementById('erasing-sentence');
     var countLists = document.querySelectorAll('#images-lists > li');
+    var countLists2 = document.querySelectorAll('#images-lists2 > li');
     var labels = document.querySelectorAll('label[class="edit-label"]');
     var numForDataList = 0;
+
+    for (var i = 0; i < labels.length; i++) {
+      labels[i].nextElementSibling.remove();
+      labels[i].remove();
+    }
+
+    if (countLists2.length > 0) {
+      imagesLists2.classList.remove('hidden');
+      imagesContainer2.classList.remove('hidden');
+    };
 
     for (var i = 0; i < countLists.length; i++) {
       countLists[i].setAttribute('data-list', `${numForDataList}`);
       numForDataList++;
     }
 
-    for (var i = 0; i < labels.length; i++) {
-      labels[i].nextElementSibling.remove();
-      labels[i].remove();
+    for (var i = 0; i < countLists2.length; i++) {
+      countLists2[i].setAttribute('data-list', `${numForDataList}`);
+      numForDataList++;
     }
-    var num = countLists.length;
-    var labelNum = countLists.length;
+
+    var num = countLists.length + countLists2.length;
+    var labelNum = countLists.length + countLists2.length;
     var newEditLabel = document.createElement('label');
     newEditLabel.setAttribute("for", `product_images_attributes_${num}_image`);
     newEditLabel.classList.add('current');
@@ -133,10 +145,10 @@ document.addEventListener('DOMContentLoaded', function() {
     var editRemove = document.querySelectorAll('.clearfix > .remove');
     for (var i = 0; i < editRemove.length; i++) {
       editRemove[i].addEventListener('click', function() {
-        this.parentNode.parentNode.nextElementSibling.checked = true;
-        this.parentNode.parentNode.nextElementSibling.value = 1;
-        this.parentNode.parentNode.nextElementSibling.nextElementSibling.checked = true;
-        this.parentNode.parentNode.nextElementSibling.nextElementSibling.value = 1;
+        var checkBoxNum = this.parentNode.parentNode.getAttribute('data-list');
+        var checkBox = document.querySelector(`input[id='product_images_attributes_${checkBoxNum}__destroy']`);
+        console.log(checkBox);
+        checkBox.checked = true;
         this.parentNode.parentNode.remove();
         this.parentNode.remove();
         this.remove();
