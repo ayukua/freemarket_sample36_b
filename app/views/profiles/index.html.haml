@@ -1,3 +1,4 @@
+= render 'shared/header'
 %main.l-container.clearfix
   .profile
     %section.profile__container
@@ -11,7 +12,5 @@
         .profile__container__content
           =f.text_area :profil_comment, class: 'profile__container__content__introduction', placeholder: "例)"
           =f.submit "変更する", class: 'profile__container__content__btn btn--red'
-
-
-
   = render partial: 'mypages/side-bar'
+= render 'shared/footer'

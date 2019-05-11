@@ -83,7 +83,7 @@
           発送元・お届け先住所変更
           %i.fa.fa-chevron-right
       %li.side-bar__nav__list-content
-        = link_to mypages_path, class: 'side-bar__nav__list-content__item' do
+        = link_to mypage_cards_path(current_user.id), class: 'side-bar__nav__list-content__item' do
           支払い方法
           %i.fa.fa-chevron-right
       %li.side-bar__nav__list-content
@@ -99,6 +99,6 @@
           電話番号の確認
           %i.fa.fa-chevron-right
       %li.side-bar__nav__list-content
-        = link_to root_path, class: 'side-bar__nav__list-content__item' do
+        = link_to logouts_path, class: 'side-bar__nav__list-content__item' do
           ログアウト
           %i.fa.fa-chevron-right

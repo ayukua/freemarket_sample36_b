@@ -6,7 +6,7 @@ class StatusesController < ApplicationController
 
   def show
     @item = Product.find(params[:id])
-    @image = @item.images.first[:image]
+    @image = @item.images.first.image
     card = Card.where(user_id: current_user.id).first
     if card.present?
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]

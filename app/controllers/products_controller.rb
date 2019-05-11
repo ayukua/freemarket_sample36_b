@@ -38,7 +38,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_update_params)
-      redirect_to root_path
+      redirect_to product_path(@product)
     else
       render :edit
     end

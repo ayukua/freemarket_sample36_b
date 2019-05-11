@@ -18,7 +18,7 @@
           %th
             出品者
           %td
-            = link_to @seller.nickname, root_path , class: "item-box__main--table-user_name"
+            = link_to @seller.nickname, root_path, class: "item-box__main--table-user_name"
             .item-box__main--table-icon
               .good-icon
                 = image_tag "faceicon/laugh-solid.svg"
@@ -36,7 +36,7 @@
           %th
             カテゴリー
           %td
-            アイコン
+            メンズ
         %tr
           %th
             ブランド
@@ -86,10 +86,10 @@
       売り切れました。
   .item-box__item-description
     %p.item-box__item-description-inner
-      この商品は〇〇です。〇〇の特徴があります。〇〇で製造され、〇〇で購入しました。見た目は〇〇ですが、〇〇です。
+      = @product.introduce
   - if user_signed_in? && @product.seller_id == current_user.id
+    = link_to "商品を編集する", edit_product_path(@product), class: "item-box__edit"
     = link_to "商品を削除する", product_path(@product.id), method: :delete, class: "item-box__delete"
-
   .item-box__item-button
     .item-box__item-button--left
       = link_to root_path , class: "item-box__item-button--left_like" do
