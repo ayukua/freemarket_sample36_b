@@ -10,10 +10,26 @@
       .clearfix#images-post-clearfix
         #item-images-container
           %ul#images-lists
+            - @image_array1.each do |img1|
+              %li
+                %figure.item-figure
+                  = image_tag img1.image, class: "item-image"
+                .clearfix
+                  %span#edit 編集
+                  %span.remove 削除
+          = f.fields_for :images do |i|
+            = i.check_box :_destroy
         #item-images-container2.hidden
           %ul#images-lists2.hidden
+            - @image_array2.each do |img2|
+              %li
+                %figure.item-figure
+                  = image_tag img2.image, class: "item-image"
+                .clearfix
+                  %span#edit 編集
+                  %span.remove 削除
         = f.fields_for :images do |i|
-          = i.label :image do
+          = i.label :image, class: "edit-label" do
             = i.file_field :image
             .post-images#have-0-item
               %h4#erasing-sentence

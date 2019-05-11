@@ -1,5 +1,5 @@
-document.addEventListener('DOMContentLoaded', function(e) {
-  if (window.location.href.match(/\/products\/new/)) {
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.location.href.match(/\/products\/\d+\/edit/)) {
     var inputFile0 = document.getElementById('product_images_attributes_0_image');
     var imagesLists = document.getElementById('images-lists');
     var postArea = document.getElementsByClassName('post-images')[0];
@@ -8,9 +8,49 @@ document.addEventListener('DOMContentLoaded', function(e) {
     var imagesContainer2 = document.getElementById('item-images-container2');
     var imagePostClearfix = document.getElementById('images-post-clearfix');
     var erasingSentence = document.getElementById('erasing-sentence');
-    var num = 0;
-    console.log(document.querySelector(`label[for='product_images_attributes_${num}_image'`));
-    inputFile0.addEventListener('change', AddInputFile, false);
+    var countLists = document.querySelectorAll('#images-lists > li');
+    var countLists2 = document.querySelectorAll('#images-lists2 > li');
+    var labels = document.querySelectorAll('label[class="edit-label"]');
+    var numForDataList = 0;
+
+    for (var i = 0; i < labels.length; i++) {
+      labels[i].nextElementSibling.remove();
+      labels[i].remove();
+    }
+
+    if (countLists2.length > 0) {
+      imagesLists2.classList.remove('hidden');
+      imagesContainer2.classList.remove('hidden');
+    };
+
+    for (var i = 0; i < countLists.length; i++) {
+      countLists[i].setAttribute('data-list', `${numForDataList}`);
+      numForDataList++;
+    }
+
+    for (var i = 0; i < countLists2.length; i++) {
+      countLists2[i].setAttribute('data-list', `${numForDataList}`);
+      numForDataList++;
+    }
+
+    var num = countLists.length + countLists2.length;
+    var labelNum = countLists.length + countLists2.length;
+    var newEditLabel = document.createElement('label');
+    newEditLabel.setAttribute("for", `product_images_attributes_${num}_image`);
+    newEditLabel.classList.add('current');
+    newEditLabel.innerHTML = `
+    <input type="file" name="product[images_attributes][${num}][image]" id="product_images_attributes_${num}_image">
+    <div id="have-${num}-item" class="post-images">
+      <h4 id="erasing-sentence">
+        ドラッグアンドドロップ
+        <br>
+        クリックしてファイルをアップロード
+      </h4>
+    </div>`
+    var imagePostClearfix = document.getElementById('images-post-clearfix');
+    imagePostClearfix.appendChild(newEditLabel);
+    var newEditInput = document.getElementById(`product_images_attributes_${num}_image`);
+    newEditInput.addEventListener('change', AddInputFile, false);
 
     function AddInputFile(evt) {
       var files = evt.target.files;
@@ -22,14 +62,17 @@ document.addEventListener('DOMContentLoaded', function(e) {
 
         reader.onload = (function(theFile) {
           return function(e) {
+            console.log(numForDataList);
             num++;
-            console.log(num);
-            console.log(document.querySelector(`label[for='product_images_attributes_${num - 1}_image'`));
-            document.querySelector(`label[for='product_images_attributes_${num - 1}_image'`).classList.add('hidden');
+            labelNum++;
+            numForDataList++;
+            document.querySelector(`label[for='product_images_attributes_${numForDataList - 1}_image']`).classList.add('hidden');
+            document.querySelector(`label[for='product_images_attributes_${numForDataList - 1}_image']`).classList.remove('current');
             var newLabel = document.createElement('label');
-            newLabel.setAttribute('for', `product_images_attributes_${num}_image`);
+            newLabel.setAttribute('for', `product_images_attributes_${labelNum}_image`);
+            newLabel.classList.add('current');
             newLabel.innerHTML = `
-    <input type="file" name="product[images_attributes][${num}][image]" id="product_images_attributes_${num}_image">
+    <input type="file" name="product[images_attributes][${labelNum}][image]" id="product_images_attributes_${labelNum}_image">
     <div id="have-${num}-item" class="post-images">
       <h4 id="erasing-sentence">
         ドラッグアンドドロップ
@@ -37,11 +80,12 @@ document.addEventListener('DOMContentLoaded', function(e) {
         クリックしてファイルをアップロード
       </h4>
     </div>`
-            console.log(newLabel);
             imagePostClearfix.appendChild(newLabel);
-            document.getElementById(`product_images_attributes_${num}_image`).addEventListener('change', AddInputFile, false);
+            document.getElementById(`product_images_attributes_${labelNum}_image`).addEventListener('change', AddInputFile, false);
             function createList() {
+              console.log(numForDataList);
               var li = document.createElement('li');
+              li.setAttribute('data-list', `${numForDataList - 1}`);
               var figure = document.createElement('figure');
               figure.classList.add('item-figure');
               var img = document.createElement('img');
@@ -61,28 +105,18 @@ document.addEventListener('DOMContentLoaded', function(e) {
               li.appendChild(clearfixDiv);
               clearfixDiv.appendChild(edit);
               clearfixDiv.appendChild(remove);
+              console.log(num);
               remove.addEventListener('click', function() {
+                var getNum = this.parentNode.parentNode.getAttribute('data-list');
                 this.parentNode.parentNode.remove();
                 this.parentNode.remove();
                 this.remove();
-                document.querySelector(`label[for='product_images_attributes_${num - 1}_image'`).remove();
-                document.querySelector(`label[for='product_images_attributes_${num}_image'`).remove();
+                document.querySelector(`label[for='product_images_attributes_${getNum}_image']`).remove();
                 num--;
-                var newLabel = document.createElement('label');
-                newLabel.setAttribute('for', `product_images_attributes_${num}_image`);
-                newLabel.innerHTML = `
-        <input type="file" name="product[images_attributes][${num}][image]" id="product_images_attributes_${num}_image">
-        <div id="have-${num}-item" class="post-images">
-          <h4 id="erasing-sentence">
-            ドラッグアンドドロップ
-            <br>
-            クリックしてファイルをアップロード
-          </h4>
-        </div>`
+                document.getElementById(`have-${num + 1}-item`).setAttribute('id', `have-${num}-item`);
                 imagePostClearfix.appendChild(newLabel);
-                var newInput = document.getElementById(`product_images_attributes_${num}_image`);
+                var newInput = document.getElementById(`product_images_attributes_${labelNum}_image`);
                 newInput.addEventListener('change', AddInputFile, false);
-                console.log(num);
                 if ( num < 6 ) {
                   imagesLists2.classList.add('hidden');
                   imagesContainer2.classList.add('hidden');
@@ -107,14 +141,35 @@ document.addEventListener('DOMContentLoaded', function(e) {
         reader.readAsDataURL(f);
       }
     }
-    inputFile0.addEventListener('change', AddInputFile, false);
+
+    var editRemove = document.querySelectorAll('.clearfix > .remove');
+    for (var i = 0; i < editRemove.length; i++) {
+      editRemove[i].addEventListener('click', function() {
+        var checkBoxNum = this.parentNode.parentNode.getAttribute('data-list');
+        var checkBox = document.querySelector(`input[id='product_images_attributes_${checkBoxNum}__destroy']`);
+        console.log(checkBox);
+        checkBox.checked = true;
+        this.parentNode.parentNode.remove();
+        this.parentNode.remove();
+        this.remove();
+        num--;
+        var currentLabel = document.getElementsByClassName('current');
+        currentLabel[0].lastElementChild.setAttribute('id', `have-${num}-item`);
+        if ( num < 6 ) {
+          imagesLists2.classList.add('hidden');
+          imagesContainer2.classList.add('hidden');
+        }
+      }, false);
+    }
+
 
     var inputPrice = document.getElementById('product_price');
     var commission = document.getElementById('commission-result');
     var benefit = document.getElementById('benefit-result');
     var hundredsPattern = /^[3-9]\d{2}$/;
     var morePattern = /^[1-9]\d{3,6}$/;
-    inputPrice.addEventListener('keyup', function() {
+
+    function priceContent() {
       if ( hundredsPattern.test(inputPrice.value) || morePattern.test(inputPrice.value) ) {
         var commissionResult = separate(Math.floor( inputPrice.value / 10 ));
         commission.textContent = "¥" + commissionResult;
@@ -124,6 +179,11 @@ document.addEventListener('DOMContentLoaded', function(e) {
         commission.textContent = "-";
         benefit.textContent = "-";
       };
+    }
+    priceContent();
+
+    inputPrice.addEventListener('keyup', function() {
+      priceContent();
     });
 
     function separate(num){
@@ -143,5 +203,5 @@ document.addEventListener('DOMContentLoaded', function(e) {
         shippingMethod.classList.add('hidden');
       };
     });
-  }
+  };
 });

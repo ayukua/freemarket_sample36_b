@@ -1,6 +1,6 @@
 $(function() {
-  $("#item_parent_category_id").change(function(event, template) {
-    var val = $("#item_parent_category_id").val();
+  $("#product_parent_category_id").change(function(event, template) {
+    var val = $("#product_parent_category_id").val();
     var template = $(`#child${val}th`);
     console.log(template);
     $(this).nextAll().remove();

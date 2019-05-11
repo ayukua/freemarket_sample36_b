@@ -1,16 +1,16 @@
 class Image < ApplicationRecord
-  belongs_to :product, foreign_key: "item_id"
+  belongs_to :product, optional: true, foreign_key: "item_id"
   mount_uploader :image, ImageUploader
 
-  def self.create_images_by(item_params)
-    return false if item_params[:image].nil?
+  # def self.create_images_by(product_params)
+  #   return false if product_params[:images_attributes].nil?
 
-    Image.transaction do
+  #   Image.transaction do
 
-      item_params[:image].each do |img|
-        new_img = Image.new(image: item_params[:image])
-        return false unless new_img.save!
-      end
-    end
-  end
+  #     product_params[:images_attributes].each do |img|
+  #       new_img = Image.new(image: img)
+  #       return false unless new_img.save!
+  #     end
+  #   end
+  # end
 end

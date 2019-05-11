@@ -79,5 +79,5 @@ gem 'ancestry'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'gon'
+gem 'fog-aws'
 gem 'erb2haml'
-

@@ -1,7 +1,7 @@
 %section.product
   = link_to product_path(product.id) do
     %figure.product__image
-      = image_tag "#{product.images[0][:image]}", width: "213", height: "220"
+      = image_tag "#{product.images[0].image}", width: "213", height: "220"
     .product__detail
       %h4 #{product.name}
       .product__detail--items.clearfix

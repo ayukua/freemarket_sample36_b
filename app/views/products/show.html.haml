@@ -8,10 +8,10 @@
       .main-photo
         .main-photo__lists
           - @images.each do |image|
-            = image_tag image[:image], class: "main-photo__list"
+            = image_tag image.image, class: "main-photo__list"
       .sub-photo
         - @images.each do |image|
-          = image_tag image[:image], class: "sub-photo__list"
+          = image_tag image.image, class: "sub-photo__list"
     %table.item-box__main--table
       %tbody
         %tr
@@ -214,7 +214,7 @@
     .items-in-user-profile__body-boxs
       - @seller_items.each do |seller_item|
         = link_to product_path(seller_item.id), class: "items-in-user-profile__body-box" do
-          = image_tag seller_item.images[0][:image], class: "items-in-user-profile__body-box--image"
+          = image_tag seller_item.images[0].image, class: "items-in-user-profile__body-box--image"
           .items-in-user-profile__body-box--text
             .items-in-user-profile__body-box--text_header
               = seller_item.name
