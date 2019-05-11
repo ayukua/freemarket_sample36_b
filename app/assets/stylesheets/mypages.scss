@@ -49,7 +49,7 @@ ul {
       box-sizing:border-box;
       height: 200px;
       padding: 20px;
-      background:url('header/user-bg.jpg');
+      background: image-url('header/user-bg.jpg');
       background-repeat:no-repeat;
       background-size: cover;
       text-align: center;
@@ -131,7 +131,7 @@ ul {
       }
       .tab_panel.active{
         padding: 160px 0 60px;
-        background: url('header/logo-gray-icon.svg');
+        background: image-url('header/logo-gray-icon.svg');
         background-repeat: no-repeat;
         background-position: center 40px;
         background-size: 78px 85px;
