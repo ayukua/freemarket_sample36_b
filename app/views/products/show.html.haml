@@ -80,7 +80,8 @@
     %span.item-box__price--item_shipping_fee
       送料込み
   - if @product.statuses[0] == nil
-    = link_to "購入画面に進む",status_path(@product.id), class: "item-box__buy-btn red"
+    - if @product.seller_id != current_user.id
+      = link_to "購入画面に進む",status_path(@product.id), class: "item-box__buy-btn red"
   - else
     .item-box__buy-btn.gray
       売り切れました。
