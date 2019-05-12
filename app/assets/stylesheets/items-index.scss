@@ -226,6 +226,24 @@ header {
           height: 38px;
           line-height: 32px;
         }
+        .sign-in-btn {
+          background-color: $red;
+          color: white;
+          border-radius: 5px;
+          width: 78px;
+          height: 32px;
+          padding: 0 10px;
+          line-height: 30px;
+        }
+        .sign-up-btn {
+          border: 1px solid $light-blue;
+          color: $light-blue;
+          border-radius: 5px;
+          width: 106px;
+          height: 32px;
+          padding: 0 10px;
+          line-height: 30px;
+        }
         .mypage-photo {
           border-radius: 50%;
         }

@@ -7,14 +7,15 @@
         %figure
           = image_tag "header/member_photo_noimage_thumb.png", alt:"", width: "60", height:"60"
 
-        %h2.bold yoshida
+        %h2.bold
+          = current_user.nickname
         .mypage__user-icon__number
           %div
             評価
             %span.bold 0
           %div
             出品数
-            %span.bold 0
+            %span.bold #{current_user.products.length}
 
     %section.mypage__notification-todo
       %ul.mypage__tabs

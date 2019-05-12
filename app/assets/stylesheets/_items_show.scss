@@ -184,6 +184,18 @@
     text-decoration: none;
     background: gray;
   }
+  &__edit {
+    display: block;
+    height: 60px;
+    margin-top: 20px;
+    line-height: 60px;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    text-decoration: none;
+    background: $light-blue;
+  }
   &__item-description{
     margin: 32px 0 0;
     font-size: 18px;
