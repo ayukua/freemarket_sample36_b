@@ -40,119 +40,126 @@
               %li
                 = link_to "ブランド一覧", root_path
       .nav__right
-        %ul.clearfix
-          %li.nav__right--element.crearfix
-            = image_tag "header/member_photo_noimage_thumb.png", width: "32", height: "32", class: "mypage-photo"
-            = link_to "マイページ", mypages_path, class: "hover-blue"
-            .user-show.none
-              .user-header
-                = image_tag "header/member_photo_noimage_thumb.png", width: "60", height: "60"
-              .mypage
-                %p
-                  = current_user.nickname
-                = link_to "評価: 0", root_path
-                = link_to "出品数: #{current_user.products.length}", root_path
-                .mypage-inner
-                  %ul.benefit-price
+        - if user_signed_in?
+          %ul.clearfix
+            %li.nav__right--element.crearfix
+              = image_tag "header/member_photo_noimage_thumb.png", width: "32", height: "32", class: "mypage-photo"
+              = link_to "マイページ", mypages_path, class: "hover-blue"
+              .user-show.none
+                .user-header
+                  = image_tag "header/member_photo_noimage_thumb.png", width: "60", height: "60"
+                .mypage
+                  %p
+                    = current_user.nickname
+                  = link_to "評価: 0", root_path
+                  = link_to "出品数: #{current_user.products.length}", root_path
+                  .mypage-inner
+                    %ul.benefit-price
+                      %li
+                        = link_to root_path, class: "clearfix" do
+                          .benefit-left 売上金
+                          .benefit-right
+                            ¥ 0
+                            = fa_icon("angle-right")
+                      %li
+                        = link_to root_path, class: "clearfix" do
+                          .benefit-left ポイント
+                          .benefit-right
+                            P 0
+                            = fa_icon("angle-right")
+                  %ul.mypage-lists
                     %li
-                      = link_to root_path, class: "clearfix" do
-                        .benefit-left 売上金
-                        .benefit-right
-                          ¥ 0
+                      = link_to mypages_path, class: "clearfix" do
+                        .mypage-left いいね！一覧
+                        .mypage-right
                           = fa_icon("angle-right")
                     %li
-                      = link_to root_path, class: "clearfix" do
-                        .benefit-left ポイント
-                        .benefit-right
-                          P 0
+                      = link_to mypages_path, class: "clearfix" do
+                        .mypage-left 出品した商品-出品中
+                        .mypage-right
                           = fa_icon("angle-right")
-                %ul.mypage-lists
-                  %li
-                    = link_to mypages_path, class: "clearfix" do
-                      .mypage-left いいね！一覧
-                      .mypage-right
-                        = fa_icon("angle-right")
-                  %li
-                    = link_to mypages_path, class: "clearfix" do
-                      .mypage-left 出品した商品-出品中
-                      .mypage-right
-                        = fa_icon("angle-right")
-                  %li
-                    = link_to mypages_path, class: "clearfix" do
-                      .mypage-left 出品した商品-取引中
-                      .mypage-right
-                        = fa_icon("angle-right")
-                  %li
-                    = link_to mypages_path, class: "clearfix" do
-                      .mypage-left 出品した商品-売却済み
-                      .mypage-right
-                        = fa_icon("angle-right")
-                  %li
-                    = link_to mypages_path, class: "clearfix" do
-                      .mypage-left 購入した商品-取引中
-                      .mypage-right
-                        = fa_icon("angle-right")
-                  %li
-                    = link_to mypages_path, class: "clearfix" do
-                      .mypage-left 購入した商品-過去の取引
-                      .mypage-right
-                        = fa_icon("angle-right")
-          %li.nav__right--element.crearfix
-            %i.fa.fa-bell
-            = link_to "お知らせ", mypages_path, class: "hover-blue bell"
-            %ul.news-lists.none
-              %li
-                = link_to mypages_path, class: "clearfix" do
-                  .news-left
-                    = image_tag "header/mercari_profile.png"
-                  .news-middle
-                    .news-middle-text 明日、800Pの有効期限が切れますフィオwjふぇおfjをjふぇおいふぇいj
-                    = fa_icon("clock")
-                    %time 1日前
-                  .news-right
-                    = fa_icon("angle-right")
-              %li
-                = link_to mypages_path, class: "clearfix" do
-                  .news-left
-                    = image_tag "header/mercari_profile.png"
-                  .news-middle
-                    .news-middle-text 明日、800Pの有効期限が切れます
-                    = fa_icon("clock")
-                    %time 1日前
-                  .news-right
-                    = fa_icon("angle-right")
-              %li
-                = link_to mypages_path, class: "clearfix" do
-                  .news-left
-                    = image_tag "header/mercari_profile.png"
-                  .news-middle
-                    .news-middle-text 明日、800Pの有効期限が切れます
-                    = fa_icon("clock")
-                    %time 1日前
-                  .news-right
-                    = fa_icon("angle-right")
-              %li
-                = link_to mypages_path, class: "clearfix" do
-                  .news-left
-                    = image_tag "header/mercari_profile.png"
-                  .news-middle
-                    .news-middle-text 明日、800Pの有効期限が切れます
-                    = fa_icon("clock")
-                    %time 1日前
-                  .news-right
-                    = fa_icon("angle-right")
-              %li
-                = link_to mypages_path, class: "clearfix" do
-                  .news-left
-                    = image_tag "header/mercari_profile.png"
-                  .news-middle
-                    .news-middle-text 明日、800Pの有効期限が切れます
-                    = fa_icon("clock")
-                    %time 1日前
-                  .news-right
-                    = fa_icon("angle-right")
-          %li.nav__right--element.crearfix
-            = fa_icon("check")
-            = link_to "やることリスト", mypages_path, class: "hover-blue check"
-            .to-do.none
-              %p 現在、やることリストはありません
+                    %li
+                      = link_to mypages_path, class: "clearfix" do
+                        .mypage-left 出品した商品-取引中
+                        .mypage-right
+                          = fa_icon("angle-right")
+                    %li
+                      = link_to mypages_path, class: "clearfix" do
+                        .mypage-left 出品した商品-売却済み
+                        .mypage-right
+                          = fa_icon("angle-right")
+                    %li
+                      = link_to mypages_path, class: "clearfix" do
+                        .mypage-left 購入した商品-取引中
+                        .mypage-right
+                          = fa_icon("angle-right")
+                    %li
+                      = link_to mypages_path, class: "clearfix" do
+                        .mypage-left 購入した商品-過去の取引
+                        .mypage-right
+                          = fa_icon("angle-right")
+            %li.nav__right--element.crearfix
+              %i.fa.fa-bell
+              = link_to "お知らせ", mypages_path, class: "hover-blue bell"
+              %ul.news-lists.none
+                %li
+                  = link_to mypages_path, class: "clearfix" do
+                    .news-left
+                      = image_tag "header/mercari_profile.png"
+                    .news-middle
+                      .news-middle-text 明日、800Pの有効期限が切れますフィオwjふぇおfjをjふぇおいふぇいj
+                      = fa_icon("clock")
+                      %time 1日前
+                    .news-right
+                      = fa_icon("angle-right")
+                %li
+                  = link_to mypages_path, class: "clearfix" do
+                    .news-left
+                      = image_tag "header/mercari_profile.png"
+                    .news-middle
+                      .news-middle-text 明日、800Pの有効期限が切れます
+                      = fa_icon("clock")
+                      %time 1日前
+                    .news-right
+                      = fa_icon("angle-right")
+                %li
+                  = link_to mypages_path, class: "clearfix" do
+                    .news-left
+                      = image_tag "header/mercari_profile.png"
+                    .news-middle
+                      .news-middle-text 明日、800Pの有効期限が切れます
+                      = fa_icon("clock")
+                      %time 1日前
+                    .news-right
+                      = fa_icon("angle-right")
+                %li
+                  = link_to mypages_path, class: "clearfix" do
+                    .news-left
+                      = image_tag "header/mercari_profile.png"
+                    .news-middle
+                      .news-middle-text 明日、800Pの有効期限が切れます
+                      = fa_icon("clock")
+                      %time 1日前
+                    .news-right
+                      = fa_icon("angle-right")
+                %li
+                  = link_to mypages_path, class: "clearfix" do
+                    .news-left
+                      = image_tag "header/mercari_profile.png"
+                    .news-middle
+                      .news-middle-text 明日、800Pの有効期限が切れます
+                      = fa_icon("clock")
+                      %time 1日前
+                    .news-right
+                      = fa_icon("angle-right")
+            %li.nav__right--element.crearfix
+              = fa_icon("check")
+              = link_to "やることリスト", mypages_path, class: "hover-blue check"
+              .to-do.none
+                %p 現在、やることリストはありません
+        - else
+          %ul.clearfix
+            %li.nav__right--element
+              = link_to "ログイン", new_user_session_path, class: "sign-in-btn"
+            %li.nav__right--element
+              = link_to "新規会員登録", new_user_registration_path, class: "sign-up-btn"
